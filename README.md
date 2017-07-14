@@ -1,7 +1,7 @@
 # New Keycloak Theme
 
 ## Running Project Locally
-After downloading and navigating into the project root, run `npm i`, then `npm run start`, which just starts local server on `localhost:8080`.
+After downloading and navigating into the project root, run `npm i`, then `npm run start`, which just starts local server on `localhost:8000`.
 
 
 ## Project Organization
@@ -11,7 +11,7 @@ Dependencies are handled through [npm](https://www.npmjs.com/). As long as you h
 
 #### Building
 Gulp is used as a build tool.  The config lives solely in the `/gulpfile.js` file.
-- Starting local server with watch and livereload: `npm run start`, or `gulp`
+- Starting local server (localhost:8000) with watch and livereload: `npm run start`, or `gulp`
 - Building: `npm run build`, or `gulp build`
 
 

@@ -6,48 +6,53 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Athlinks | Log In</title>
 	<meta name="description" content="Create bookmarks!">
+
+	<link rel="stylesheet" charset="utf-8" href="/css/main.css">
 </head>
 <body>
 
-	<header>
-		<img src="/img/logo.svg" alt="Athlinks">
-		<p>The largest online database of official race results in the world. If you’ve ever finished a race, your results are here.</p>
-	</header>
-	
-	<main>
-		<!-- Tabs -->
-		<nav>
-			<button>Sign In</button>
+	<div class="content-wrapper">
+		<header>
+			<img src="/img/logo-horizontal-white.svg" alt="Athlinks" class="logo">
+			<p class="value-prop">The largest online database of official race results in the world. If you’ve ever finished a race, your results are here.</p>
+		</header>
+		
+		<main>
+			<!-- Tabs -->
+			<nav>
+				<button>SIGN IN</button>
+				<button>SIGN UP</button>
+				<span class="underline-highlight"></span>
+			</nav>
+
+			<div class="tab-container">
+				<form id="form-sign-in">
+					<h4 class="line-title">Sign In With</h4>
+					<div class="social-button-container">
+						<button>Facebook</button>
+						<button>Google</button>
+					</div>
+					<h4 class="line-title">Or</h4>
+					<label for="email">
+						<input id="email" type="text" placeholder="Username">
+					</label>
+					<label for="password">
+						<input id="password" type="password" placeholder="Password">
+					</label>
+					(keep me logged in switch)
+					<button>Submit</button>
+				</form>
+				<!-- <form id="form-sign-up">
+				</form> -->
+			</div>
+		</main>
+
+		<div className="landing-button-container">
 			<button>Sign Up</button>
-		</nav>
-
-		<div class="tab-container">
-			<form id="form-sign-in">
-				<h4>Sign In With</h4>
-				<div class="social-button-container">
-					<button>Facebook</button>
-					<button>Google</button>
-				</div>
-				<h4>Or</h4>
-				<label for="email">
-					<input id="email" type="text" placeholder="Username">
-				</label>
-				<label for="password">
-					<input id="password" type="password" placeholder="Username">
-				</label>
-				(keep me logged in switch)
-				<button>Submit</button>
-			</form>
-			<!-- <form id="form-sign-up">
-			</form> -->
+			<button class="hollow">Sign In</button>
 		</div>
-	</main>
-
-	<div className="landing-button-container">
-		<button>Sign Up</button>
-		<button class="hollow">Sign In</button>
 	</div>
 
-	<script src="/bundle.js"></script>
+	<!-- <script src="/bundle.js"></script> -->
 </body>
 </html>

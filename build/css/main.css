@@ -1,12 +1,20 @@
 @font-face {
   font-family: 'Proxima Nova';
-  font-weight: '400';
-  src: local("Proxima Nova Regular"), url("/fonts/proximanova/ProximaNovaRegular.otf"); }
+  font-weight: 400;
+  font-style: normal;
+  src: url("/fonts/proximanova/ProximaNovaRegular.otf") format("opentype"), url("/fonts/proximanova/ProximaNovaRegular.woff"); }
 
 @font-face {
   font-family: 'Proxima Nova';
-  font-weight: '600';
-  src: local("Proxima Nova Semibold"), url("/fonts/proximanova/ProximaNovaSemibold.otf"); }
+  font-weight: 600;
+  font-style: normal;
+  src: url("/fonts/proximanova/ProximaNovaSemibold.otf") format("opentype"), url("/fonts/proximanova/ProximaNovaSemibold.woff"); }
+
+@font-face {
+  font-family: 'Proxima Nova';
+  font-weight: 700;
+  font-style: normal;
+  src: url("/fonts/proximanova/ProximaNovaBold.otf") format("opentype"), url("/fonts/proximanova/ProximaNovaBold.woff"); }
 
 * {
   box-sizing: border-box; }
@@ -24,11 +32,10 @@ html {
   font-family: "Proxima Nova", Arial, sans-serif;
   color: #FFF; }
 
-main {
-  position: relative;
-  min-height: 100vh;
-  padding: 50px 20px 30px;
-  text-align: center; }
+.content-wrapper {
+  max-width: 450px;
+  padding: 0 32px;
+  margin: 0 auto; }
 
 h1,
 h2,
@@ -45,6 +52,33 @@ h1 {
 h2 {
   font-size: 2.3rem; }
 
+h4 {
+  font-size: 0.6rem;
+  font-weight: 400; }
+  h4.line-title {
+    color: #AEB2BB;
+    position: relative;
+    display: inline-block; }
+    h4.line-title:before, h4.line-title:after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      height: 1px;
+      width: 80px;
+      -ms-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    h4.line-title:before {
+      right: calc(100% + 15px);
+      background: linear-gradient(to left, #aeb2bb, rgba(174, 178, 187, 0)); }
+    h4.line-title:after {
+      left: calc(100% + 15px);
+      background: linear-gradient(to right, #aeb2bb, rgba(174, 178, 187, 0)); }
+  @media (min-width: 768px) {
+    h4 {
+      font-size: 0.8rem; } }
+
 a {
   color: #FFF;
   text-decoration: none;
@@ -53,11 +87,6 @@ a {
   a:visited {
     color: #FFF; }
 
-.no-wrap {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis; }
-
 label {
   display: block; }
   label .label-copy {
@@ -65,7 +94,8 @@ label {
     margin: 0 0 4px;
     font-size: 0.8rem; }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   display: inline-block;
   padding: 10px 15px 9px;
   border-radius: 3px;
@@ -76,7 +106,8 @@ input[type="text"] {
   font-family: "Proxima Nova", Arial, sans-serif;
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
-  input[type="text"]:focus {
+  input[type="text"]:focus,
+  input[type="password"]:focus {
     border-color: #16A9E1; }
 
 button,
@@ -100,3 +131,60 @@ button,
   fill: #16A9E1;
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
+
+body {
+  min-height: 100vh;
+  padding-top: 26px;
+  background-color: #485068;
+  background-image: url("/img/leadville_blue.png");
+  background-position: center; }
+  @media (min-width: 768px) {
+    body {
+      padding-top: 80px; } }
+
+header {
+  text-align: center;
+  margin-bottom: 40px; }
+  header .logo {
+    display: inline-block;
+    height: 30px;
+    width: auto; }
+  header .value-prop {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden; }
+  @media (min-width: 768px) {
+    header .logo {
+      height: 50px; } }
+
+main nav {
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid #AEB2BB;
+  color: #AEB2BB; }
+  main nav button {
+    border: none;
+    background-color: transparent;
+    flex: 1 0 50%;
+    padding: 3px 10px;
+    text-align: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #AEB2BB; }
+  main nav .underline-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 1px;
+    background-color: #FFF; }
+
+main .tab-container form {
+  padding-top: 32px;
+  text-align: center; }
+  main .tab-container form .social-button-container {
+    padding: 26px 0; }
+  @media (min-width: 768px) {
+    main .tab-container form .social-button-container {
+      padding: 50px 0; } }

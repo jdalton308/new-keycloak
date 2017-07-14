@@ -6,14 +6,14 @@
 //-------------
 $black:		    #000;
 $grey:		    #AEB2BB;
-// $grey-shadow: #999;
-// $grey-light:  #E0E0E0;
-// $off-white: 	#F4F4F4;
+$grey-rgb1:   rgba(174, 178, 187, 1); // === #AEB2BB
+$grey-rgb0:   rgba(174, 178, 187, 0);
 $white: 		  #FFF;
 
 // $green:       #97CC04;
 // $red:         #FF3C38;
 $blue:        #16A9E1;
+$blue-dark:   #485068;
 // $blue-hover:  darken($blue, 20%);
 
 $text-color:   $white;
