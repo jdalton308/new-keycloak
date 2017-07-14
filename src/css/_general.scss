@@ -1,0 +1,138 @@
+
+// General Styles
+//------------------------
+* {
+	box-sizing: border-box;
+}
+:focus {
+	outline: none;
+}
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+html {
+	font-size: $base-font-size;
+	font-family: $sans-family;
+	color: $text-color;
+}
+main {
+	position: relative;
+	min-height: 100vh;
+	padding: 50px 20px 30px;
+	text-align: center;
+	background-color: $off-white;
+}
+
+
+// Text
+//---------
+h1,
+h2,
+h3,
+h4 {
+	line-height: 1.3em;
+	font-weight: 400;
+	margin: 0;
+}
+h1 {
+	font-size: 2rem;
+	color: $black;
+}
+h2 {
+	font-size: 2.3rem;
+}
+
+a {
+	color: $text-color;
+	text-decoration: none;
+	@include transition();
+
+	&:visited {
+		color: $text-color;
+	}
+}
+
+
+// Utilities
+//---------
+.no-wrap {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+
+// Forms
+//---------
+label {
+	display: block;
+
+	.label-copy {
+		display: inline-block;
+		margin: 0 0 4px;
+		font-size: 0.8rem;
+		color: $grey-light;
+	}
+}
+input[type="text"] {
+	display: inline-block;
+	padding: 10px 15px 9px;
+	border: 1px solid $grey-light;
+	border-radius: 3px;
+	background-color: $white;
+	font-size: 1rem;
+	line-height: 1em;
+	color: $text-color;
+	font-family: $sans-family;
+	@include transition();
+
+	&:focus {
+		border-color: $blue;
+	}
+
+	&.valid {
+		border-color: $green;
+	}
+	&.invalid {
+		border-color: $red;
+	}
+}
+
+
+// Buttons
+//----------
+button,
+.button {
+	display: inline-block;
+	padding: 11px 30px 9px;
+	border: none;
+	border-radius: 3px;
+	font-family: $sans-family;
+	font-size: 1rem;
+	color: $white;
+	cursor: pointer;
+	background-color: $blue;
+	@include transition();
+
+	&:hover {
+		background-color: $blue-hover;
+	}
+	&:disabled {
+		cursor: default;
+		background-color: $grey-light;
+	}
+}
+
+
+// Icons
+//----------
+.icon-base {
+	fill: $blue;
+	@include transition();
+
+	&:hover {
+		fill: $blue-hover;
+	}
+}

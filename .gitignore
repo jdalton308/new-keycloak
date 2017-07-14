@@ -1,0 +1,10 @@
+
+### Installed dependecies ###
+
+/node_modules/*
+npm-debug.log
+
+
+### OS-Generated ###
+
+.DS_Store

@@ -1,0 +1,82 @@
+
+// Variables
+//============================
+
+//// COLORS ////
+//-------------
+$black:		    #000;
+$grey:		    #AEB2BB;
+// $grey-shadow: #999;
+// $grey-light:  #E0E0E0;
+// $off-white: 	#F4F4F4;
+$white: 		  #FFF;
+
+// $green:       #97CC04;
+// $red:         #FF3C38;
+$blue:        #16A9E1;
+// $blue-hover:  darken($blue, 20%);
+
+
+//// FONTS ////
+//-------------
+$base-font-size: 	20px;
+$sans-family: 		"Proxima Nova", Arial, sans-serif;
+
+
+//// BREAKPOINTS ////
+//-------------------
+$mobile:    768px;
+$tablet:    1024px;
+$desktop:   1200px;
+
+
+//// OTHER ////
+//-------------
+$curve1: cubic-bezier(.22,.07,.23,.99);
+
+
+
+//// MIXINS ////
+//-------------
+@mixin transition($time: 0.3s) {
+	-webkit-transition: all $time;
+	transition: all $time;
+}
+@mixin transform($props) {
+  -ms-transform: $props;
+  -webkit-transform: $props;
+  transform: $props;
+}
+@mixin centerMe() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform( translate(-50%, -50%) );
+}
+@mixin centerX() {
+  position: absolute;
+  right: 50%;
+  @include transform( translateX(50%) );
+}
+@mixin centerY() {
+  position: absolute;
+  top: 50%;
+  @include transform( translateY(-50%) );
+}
+
+// Animations
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin animation($name, $duration, $timing: $curve1, $delay: 0s, $iterations: 1, $direction: normal,  $fill-mode: forwards) {
+
+  -webkit-animation: $name $duration $timing $delay $iterations $direction $fill-mode;
+  animation: $name $duration $timing $delay $iterations $direction $fill-mode;
+
+}
