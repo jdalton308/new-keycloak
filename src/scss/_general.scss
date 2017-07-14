@@ -22,7 +22,6 @@ main {
 	min-height: 100vh;
 	padding: 50px 20px 30px;
 	text-align: center;
-	background-color: $off-white;
 }
 
 
@@ -73,13 +72,13 @@ label {
 		display: inline-block;
 		margin: 0 0 4px;
 		font-size: 0.8rem;
-		color: $grey-light;
+		// color: $grey-light;
 	}
 }
 input[type="text"] {
 	display: inline-block;
 	padding: 10px 15px 9px;
-	border: 1px solid $grey-light;
+	// border: 1px solid $grey-light;
 	border-radius: 3px;
 	background-color: $white;
 	font-size: 1rem;
@@ -93,10 +92,10 @@ input[type="text"] {
 	}
 
 	&.valid {
-		border-color: $green;
+		// border-color: $green;
 	}
 	&.invalid {
-		border-color: $red;
+		// border-color: $red;
 	}
 }
 
@@ -117,11 +116,11 @@ button,
 	@include transition();
 
 	&:hover {
-		background-color: $blue-hover;
+		// background-color: $blue-hover;
 	}
 	&:disabled {
 		cursor: default;
-		background-color: $grey-light;
+		// background-color: $grey-light;
 	}
 }
 
@@ -133,6 +132,6 @@ button,
 	@include transition();
 
 	&:hover {
-		fill: $blue-hover;
+		// fill: $blue-hover;
 	}
 }
