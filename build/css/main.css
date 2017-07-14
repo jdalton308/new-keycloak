@@ -88,44 +88,81 @@ a {
     color: #FFF; }
 
 label {
+  position: relative;
   display: block; }
   label .label-copy {
+    position: absolute;
+    left: 0;
+    bottom: 5px;
     display: inline-block;
-    margin: 0 0 4px;
-    font-size: 0.8rem; }
-
-input[type="text"],
-input[type="password"] {
-  display: inline-block;
-  padding: 10px 15px 9px;
-  border-radius: 3px;
-  background-color: #FFF;
-  font-size: 1rem;
-  line-height: 1em;
-  color: #FFF;
-  font-family: "Proxima Nova", Arial, sans-serif;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s; }
-  input[type="text"]:focus,
-  input[type="password"]:focus {
-    border-color: #16A9E1; }
+    font-size: 0.8rem;
+    color: #FFF;
+    pointer-events: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s; }
+  label input[type="text"],
+  label input[type="password"] {
+    display: block;
+    width: 100%;
+    padding: 10px 0 5px;
+    background-color: transparent;
+    font-family: "Proxima Nova", Arial, sans-serif;
+    font-size: 0.8rem;
+    line-height: 1em;
+    color: #FFF;
+    border: 0;
+    border-bottom: 1px solid #FFF;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s; }
+    label input[type="text"]:focus,
+    label input[type="password"]:focus {
+      border-color: #16A9E1; }
+      label input[type="text"]:focus + .label-copy,
+      label input[type="password"]:focus + .label-copy {
+        -ms-transform: translateY(-20px) scale(0.7);
+        -webkit-transform: translateY(-20px) scale(0.7);
+        transform: translateY(-20px) scale(0.7);
+        transform-origin: 0% 50%; }
+  label.has-content .label-copy {
+    -ms-transform: translateY(-20px) scale(0.7);
+    -webkit-transform: translateY(-20px) scale(0.7);
+    transform: translateY(-20px) scale(0.7);
+    transform-origin: 0% 50%; }
 
 button,
 .button {
   display: inline-block;
   padding: 11px 30px 9px;
   border: none;
-  border-radius: 3px;
+  border-radius: 2px;
   font-family: "Proxima Nova", Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #FFF;
   cursor: pointer;
   background-color: #16A9E1;
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
+  button.full-width,
+  .button.full-width {
+    width: 100%; }
+  button:hover,
+  .button:hover {
+    background-color: #1186b3; }
   button:disabled,
   .button:disabled {
-    cursor: default; }
+    cursor: default;
+    background-color: #AEB2BB; }
+  button.hollow,
+  .button.hollow {
+    font-size: 0.8rem;
+    color: #FFF;
+    border: 1px solid #FFF;
+    border-radius: 2px;
+    background-color: transparent; }
+    button.hollow:hover,
+    .button.hollow:hover {
+      color: #16A9E1;
+      border-color: #16A9E1; }
 
 .icon-base {
   fill: #16A9E1;
@@ -134,7 +171,7 @@ button,
 
 body {
   min-height: 100vh;
-  padding-top: 26px;
+  padding: 26px 0 60px;
   background-color: #485068;
   background-image: url("/img/leadville_blue.png");
   background-position: center; }
@@ -172,6 +209,11 @@ main nav {
     font-weight: 700;
     letter-spacing: 0.5px;
     color: #AEB2BB; }
+    main nav button:hover {
+      background-color: transparent;
+      color: #FFF; }
+    main nav button.selected {
+      color: #FFF; }
   main nav .underline-highlight {
     position: absolute;
     bottom: 0;
@@ -184,7 +226,21 @@ main .tab-container form {
   padding-top: 32px;
   text-align: center; }
   main .tab-container form .social-button-container {
-    padding: 26px 0; }
-  @media (min-width: 768px) {
-    main .tab-container form .social-button-container {
-      padding: 50px 0; } }
+    padding: 26px 0;
+    display: flex; }
+    main .tab-container form .social-button-container button {
+      flex: 1; }
+      main .tab-container form .social-button-container button:first-child {
+        margin-right: 20px; }
+
+main .input-container {
+  margin-bottom: 60px; }
+  main .input-container label {
+    margin-top: 32px; }
+  main .input-container .keep-signed-in {
+    padding: 20px 0;
+    text-align: left;
+    font-size: 0.6rem; }
+
+.landing-button-container {
+  display: none; }

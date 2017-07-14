@@ -1,7 +1,7 @@
 
 body {
 	min-height: 100vh;
-	padding-top: 26px;
+	padding: 26px 0 60px;
 	background-color: $blue-dark;
 	background-image: url('/img/leadville_blue.png');
 	background-position: center;
@@ -54,6 +54,15 @@ main {
 			letter-spacing: 0.5px;
 			color: $grey;
 
+			&:hover {
+				background-color: transparent;
+				color: $white;
+			}
+
+			&.selected {
+				color: $white;
+			}
+
 			@media (min-width: $mobile) {
 				// font-size: 0.8rem;
 			}
@@ -78,13 +87,42 @@ main {
 			}
 			.social-button-container {
 				padding: 26px 0;
+				display: flex;
+
+				button {
+					flex: 1;
+
+					&:first-child {
+						margin-right: 20px;
+					}
+				}
 			}
 
 			@media (min-width: $mobile) {
 				.social-button-container {
-					padding: 50px 0;
+					// padding: 50px 0;
 				}
 			}
 		}
 	}
+
+	.input-container {
+		// padding-top: 10px;
+		margin-bottom: 60px;
+
+		label {
+			margin-top: 32px;
+		}
+
+		.keep-signed-in {
+			padding: 20px 0;
+			text-align: left;
+			font-size: 0.6rem;
+		}
+	}
+}
+
+
+.landing-button-container {
+	display: none;
 }

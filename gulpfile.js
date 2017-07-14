@@ -18,7 +18,7 @@ const htmlFiles = [
 	];
 
 function onError(err) {
-  console.log(err);
+  console.log(err.toString());
   this.emit('end');
 }
 
@@ -28,17 +28,17 @@ gulp.task('styles', () => {
   gulp.src(styleFiles)
     .pipe(concat('main.css'))
     .pipe(sass())
-    .pipe(gulp.dest('./build/css/'))
-    .on('error', onError);
+    .on('error', onError)
+    .pipe(gulp.dest('./build/css/'));
 });
 
 gulp.task('scripts', () => {
-  gulp.src('./src/js/main.js')
+  gulp.src('./src/js/index.js')
     .pipe(babel({
         presets: ['es2015']
     }))
-    .pipe(gulp.dest('./build/js/'))
-    .on('error', onError);
+    .on('error', onError)
+    .pipe(gulp.dest('./build/js/'));
 });
 
 gulp.task('html', () => {
@@ -46,8 +46,8 @@ gulp.task('html', () => {
 		.pipe(htmlMin({
 			collapseWhitespace: true
 		}))
-		.pipe(gulp.dest('./build/'))
-    .on('error', onError);
+    .on('error', onError)
+		.pipe(gulp.dest('./build/'));
 });
 
 gulp.task('server', () => {

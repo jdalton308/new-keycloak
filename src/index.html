@@ -20,7 +20,7 @@
 		<main>
 			<!-- Tabs -->
 			<nav>
-				<button>SIGN IN</button>
+				<button class="selected">SIGN IN</button>
 				<button>SIGN UP</button>
 				<span class="underline-highlight"></span>
 			</nav>
@@ -29,30 +29,37 @@
 				<form id="form-sign-in">
 					<h4 class="line-title">Sign In With</h4>
 					<div class="social-button-container">
-						<button>Facebook</button>
-						<button>Google</button>
+						<button class="hollow">Facebook</button>
+						<button class="hollow">Google</button>
 					</div>
+
 					<h4 class="line-title">Or</h4>
-					<label for="email">
-						<input id="email" type="text" placeholder="Username">
-					</label>
-					<label for="password">
-						<input id="password" type="password" placeholder="Password">
-					</label>
-					(keep me logged in switch)
-					<button>Submit</button>
+					<div class="input-container">
+						<label for="email">
+							<input id="email" type="text">
+							<span class="label-copy">Email</span>
+						</label>
+						<label for="password">
+							<input id="password" type="password">
+							<span class="label-copy">Password</span>
+						</label>
+						<div class="keep-signed-in">
+							(keep me logged in switch)
+						</div>
+					</div>
+					<button class="full-width">Submit</button>
 				</form>
 				<!-- <form id="form-sign-up">
 				</form> -->
 			</div>
 		</main>
 
-		<div className="landing-button-container">
+		<div class="landing-button-container">
 			<button>Sign Up</button>
 			<button class="hollow">Sign In</button>
 		</div>
 	</div>
 
-	<!-- <script src="/bundle.js"></script> -->
+	<script src="/js/index.js"></script>
 </body>
 </html>

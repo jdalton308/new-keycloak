@@ -99,38 +99,51 @@ a {
 // Forms
 //---------
 label {
+	position: relative;
 	display: block;
 
 	.label-copy {
+		position: absolute;
+		left: 0;
+		bottom: 5px;
 		display: inline-block;
-		margin: 0 0 4px;
 		font-size: 0.8rem;
-		// color: $grey-light;
+		color: $white;
+		pointer-events: none;
+		@include transition();
 	}
-}
-input[type="text"],
-input[type="password"] {
-	display: inline-block;
-	padding: 10px 15px 9px;
-	// border: 1px solid $grey-light;
-	border-radius: 3px;
-	background-color: $white;
-	font-size: 1rem;
-	line-height: 1em;
-	color: $text-color;
-	font-family: $sans-family;
-	@include transition();
+	input[type="text"],
+	input[type="password"] {
+		display: block;
+		width: 100%;
+		padding: 10px 0 5px;
+		background-color: transparent;
+		font-family: $sans-family;
+		font-size: 0.8rem;
+		line-height: 1em;
+		color: $text-color;
+		border: 0;
+		border-bottom: 1px solid $white;
+		@include transition();
 
-	&:focus {
-		border-color: $blue;
+		&:focus {
+			border-color: $blue;
+
+			+ .label-copy {
+				@include transform( translateY(-20px) scale(0.7) );
+				transform-origin: 0% 50%;
+			}
+		}
+
 	}
 
-	&.valid {
-		// border-color: $green;
+	&.has-content {
+		.label-copy {
+			@include transform( translateY(-20px) scale(0.7) );
+			transform-origin: 0% 50%;
+		}
 	}
-	&.invalid {
-		// border-color: $red;
-	}
+
 }
 
 
@@ -141,20 +154,37 @@ button,
 	display: inline-block;
 	padding: 11px 30px 9px;
 	border: none;
-	border-radius: 3px;
+	border-radius: 2px;
 	font-family: $sans-family;
-	font-size: 1rem;
+	font-size: 0.8rem;
 	color: $white;
 	cursor: pointer;
 	background-color: $blue;
 	@include transition();
 
+	&.full-width {
+		width: 100%;
+	}
+
 	&:hover {
-		// background-color: $blue-hover;
+		background-color: $blue-hover;
 	}
 	&:disabled {
 		cursor: default;
-		// background-color: $grey-light;
+		background-color: $grey;
+	}
+
+	&.hollow {
+		font-size: 0.8rem;
+		color: $white;
+		border: 1px solid $white;
+		border-radius: 2px;
+		background-color: transparent;
+
+		&:hover {
+			color: $blue;
+			border-color: $blue;
+		}
 	}
 }
 
