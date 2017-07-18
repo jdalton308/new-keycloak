@@ -19,8 +19,14 @@ html {
 }
 .content-wrapper {
 	max-width: 450px;
-	padding: 0 32px;
+	padding: 0 24px;
 	margin: 0 auto;
+	overflow-y: hidden;
+
+	@media (min-width: $mobile) {
+		padding: 0 32px;
+		overflow-y: visible;
+	}
 }
 
 
@@ -72,17 +78,28 @@ h4 {
 	}
 
 	@media (min-width: $mobile) {
-		font-size: 0.8rem;
+		font-size: 0.7rem;
 	}
 }
 
 a {
-	color: $text-color;
+	color: $blue;
 	text-decoration: none;
 	@include transition();
 
 	&:visited {
-		color: $text-color;
+		color: $blue;
+	}
+	&:hover {
+		color: $blue-hover;
+	}
+}
+
+p {
+	margin: 0;
+
+	&.fine-print {
+		font-size: 0.6rem;
 	}
 }
 
@@ -105,7 +122,7 @@ label {
 	.label-copy {
 		position: absolute;
 		left: 0;
-		bottom: 5px;
+		bottom: 3px;
 		display: inline-block;
 		font-size: 0.8rem;
 		color: $white;
@@ -113,10 +130,11 @@ label {
 		@include transition();
 	}
 	input[type="text"],
+	input[type="email"],
 	input[type="password"] {
 		display: block;
 		width: 100%;
-		padding: 10px 0 5px;
+		padding: 12px 0 3px;
 		background-color: transparent;
 		font-family: $sans-family;
 		font-size: 0.8rem;
@@ -130,7 +148,7 @@ label {
 			border-color: $blue;
 
 			+ .label-copy {
-				@include transform( translateY(-20px) scale(0.7) );
+				@include transform( translateY(-22px) scale(0.7) );
 				transform-origin: 0% 50%;
 			}
 		}
@@ -139,8 +157,20 @@ label {
 
 	&.has-content {
 		.label-copy {
-			@include transform( translateY(-20px) scale(0.7) );
+			@include transform( translateY(-22px) scale(0.7) );
 			transform-origin: 0% 50%;
+		}
+	}
+
+	// input validation
+	&.valid {
+		.label-copy {
+			color: $green;
+		}
+	}
+	&.error {
+		.label-copy {
+			color: $red;
 		}
 	}
 
@@ -180,10 +210,30 @@ button,
 		border: 1px solid $white;
 		border-radius: 2px;
 		background-color: transparent;
+		
+		svg {
+			position: relative;
+			top: 2px;
+			display: inline-block;
+			height: 15px;
+			margin-right: 8px;
+
+			path {
+				@include transition();
+			}
+		}
+		span {
+			vertical-align: top;
+		}
 
 		&:hover {
 			color: $blue;
 			border-color: $blue;
+			// background-color: rgba(255,255,255, 0.1);
+
+			svg path {
+				fill: $blue;
+			}
 		}
 	}
 }

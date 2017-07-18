@@ -10,8 +10,8 @@ $grey-rgb1:   rgba(174, 178, 187, 1); // === #AEB2BB
 $grey-rgb0:   rgba(174, 178, 187, 0);
 $white: 		  #FFF;
 
-// $green:       #97CC04;
-// $red:         #FF3C38;
+$green:       #97CC04;
+$red:         #FF3C38;
 $blue:        #16A9E1;
 $blue-dark:   #485068;
 $blue-hover:  darken($blue, 10%);
@@ -38,11 +38,11 @@ $curve1: cubic-bezier(.22,.07,.23,.99);
 
 
 
-//// MIXINS ////
+//// MIXINS™ ////
 //-------------
 @mixin transition($time: 0.3s) {
-	-webkit-transition: all $time;
-	transition: all $time;
+	-webkit-transition: all $time $curve1;
+	transition: all $time $curve1;
 }
 @mixin transform($props) {
   -ms-transform: $props;

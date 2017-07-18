@@ -1,16 +1,24 @@
 
+// Background
+//----------
 body {
 	min-height: 100vh;
+	max-width: 100vw;
 	padding: 26px 0 60px;
 	background-color: $blue-dark;
 	background-image: url('/img/leadville_blue.png');
 	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	overflow-x: hidden;
 
 	@media (min-width: $mobile) {
 		padding-top: 80px;
 	}
 }
 
+// Logo & Landing text
+//----------
 header {
 	text-align: center;
 	margin-bottom: 40px;
@@ -27,7 +35,7 @@ header {
 	}
 
 	@media (min-width: $mobile) {
-		// margin-bottom: 60px;
+		margin-bottom: 60px;
 
 		.logo {
 			height: 50px;
@@ -36,6 +44,51 @@ header {
 }
 
 main {
+	&.sign-in {
+		nav {
+			button {
+				&.tab-sign-in {
+					color: $white;
+					opacity: 1;
+				}
+			}
+			.underline-highlight {
+			}
+		}
+		.tab-container {
+			@include transform( translateX(0) );
+
+			#form-sign-in {
+				opacity: 1;
+				pointer-events: auto;
+			}
+		}
+	}
+	&.sign-up {
+		nav {
+			button {
+				&.tab-sign-up {
+					color: $white;
+					opacity: 1;
+				}
+			}
+			.underline-highlight {
+				@include transform( translateX(100%) );
+			}
+		}
+		.tab-container {
+			@include transform( translateX(-50%) );
+
+			#form-sign-up {
+				opacity: 1;
+				pointer-events: auto;
+			}
+		}
+	}
+
+
+	// Tab Buttons
+	//----------
 	nav {
 		position: relative;
 		display: flex;
@@ -48,18 +101,15 @@ main {
 
 			flex: 1 0 50%;
 			padding: 3px 10px;
-			text-align: center;
+			vertical-align: top;
 			font-size: 0.6rem;
 			font-weight: 700;
-			letter-spacing: 0.5px;
+			letter-spacing: 0.7px;
 			color: $grey;
+			opacity: 0.5;
 
 			&:hover {
 				background-color: transparent;
-				color: $white;
-			}
-
-			&.selected {
 				color: $white;
 			}
 
@@ -69,24 +119,39 @@ main {
 		}
 		.underline-highlight {
 			position: absolute;
-			bottom: 0;
+			bottom: -1px;
 			left: 0;
 			width: 50%;
 			height: 1px;
 			background-color: $white;
+			@include transition(); // TODO: bezier curve
 		}
 	}
 
+	// Forms
+	//----------
 	.tab-container {
+		position: relative;
+		display: flex;
+		width: 200%;
+		@include transition();
+
 		form {
+			display: inline-block;
+			flex: 0 0 50%;
+			width: 50%;
 			padding-top: 32px;
 			text-align: center;
+			opacity: 0; // animated in
+			pointer-events: none;
+			@include transition();
 
 			.line-title {
 				// margin-bottom: 26px;
 			}
+
 			.social-button-container {
-				padding: 26px 0;
+				padding: 26px 0 32px;
 				display: flex;
 
 				button {
@@ -94,6 +159,58 @@ main {
 
 					&:first-child {
 						margin-right: 20px;
+					}
+				}
+			}
+
+			.input-container {
+				padding-top: 20px;
+				margin-bottom: 60px;
+
+
+				.keep-signed-in {
+					padding: 20px 0;
+					text-align: left;
+					font-size: 0.6rem;
+				}
+			}
+
+			.fine-print {
+				margin-top: 8px;
+			}
+
+			&#form-sign-in {
+				.input-container {
+					label {
+						&:first-child {
+							margin-bottom: 32px;
+						}
+					}
+				}
+			}
+			&#form-sign-up {
+				.input-container {
+					label {
+						margin-bottom: 32px;
+
+						&:last-of-type {
+							margin-bottom: 0;
+						}
+					}
+					.multi-input-line {
+						display: flex;
+						margin-bottom: 32px;
+
+						label {
+							flex: 1;
+							display: inline-block;
+							margin-bottom: 0;
+							margin-right: 20px;
+
+							&:last-child {
+								margin: 0;
+							}
+						}
 					}
 				}
 			}
@@ -106,20 +223,6 @@ main {
 		}
 	}
 
-	.input-container {
-		// padding-top: 10px;
-		margin-bottom: 60px;
-
-		label {
-			margin-top: 32px;
-		}
-
-		.keep-signed-in {
-			padding: 20px 0;
-			text-align: left;
-			font-size: 0.6rem;
-		}
-	}
 }
 
 
