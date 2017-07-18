@@ -1,49 +1,45 @@
 
-// const form = (function() {
-// 	// Set state of invalid
-// 	// For each text input,
-// 	// - valid when any content
-// 	// - if valid/invalid, update state
-// 	// For each email input
-// 	// - valid when email (regex in current keycloak)
-// 	// - update state
-// 	// For password
-// 	// - valid with regex from current keycload
-// 	// - update state
+const Forms = (function() {
 
-// 	function validateForm(inputContainers, form) {
-// 		// check if all are valid
-		
-// 	}
+	function isValid(form) {
+		const formFields = form.querySelectorAll('label');
 
-// 	function initForm(form) {
-// 		let formValid = false;
-// 		const formInputContainers = form.querySelectorAll('label');
-// 		const formInputs = form.querySelectorAll('input');
+		let isValid = true;
+		formFields.forEach((el) => {
+			if (!el.classList.contains('valid')) {
+				isValid = false;
+			}
+		});
+		return isValid;
+	}
 
-// 		formInputs.addEventListener('keyup', (e) => {
-// 			// validate form
-// 			validateForm(formInputContainers, form);
-// 		});
-// 	}
+	function validate(form) {
+		const submitButton = form.querySelector('button.submit');
+		if (isValid(form)) {
+			submitButton.removeAttribute('disabled');
+		} else {
+			submitButton.setAttribute('disabled', '');
+		}
+	}
 
-// 	function init() {
-// 		const forms = document.querySelectorAll('form');
-// 		forms.forEach((form) => {
-// 			initForm(form);
-// 		})
-// 	}
-// })();
+	function init() {
+		const forms = document.querySelectorAll('form');
+
+		forms.forEach((form) => {
+			Inputs.init(form);
+		})
+	}
 
 
+	return {
+		init: init,
+		validate: validate
+	};
+})();
 
-const inputs = (function() {
 
-	// TODO:
-	// - Validation
-	//   - Inline validation and feedback
-	//   - Disable submit until all valid content
-	// - Display server responses
+
+const Inputs = (function() {
 
 	function setValidState(labelEl, isValid, e) {
 		if (labelEl.classList.contains('has-content')) {
@@ -83,40 +79,36 @@ const inputs = (function() {
 	}
 
 	function watchBlur(e) {
-		// Add 'touched' class to input
 		e.target.classList.add('touched');
-		e.target.removeEventListener('blur', watchBlur);
+		e.target.removeEventListener('blur', watchBlur); // do once
 	}
 
 
-	// watch for content to keep placeholder elevated
-	function watchForContent(inputContainer) {
+	function bindEvents(inputContainer, form) {
 		const inputLabel = inputContainer.querySelector('.label-copy');
 		const inputField = inputContainer.querySelector('input');
-		const inputType = inputField.attributes.type.value;
-		const inputValidator = getValidator(inputType);
+		const inputValidator = getValidator(inputField.attributes.type.value);
 
 		// Keyup events
 		inputField.addEventListener('keyup', (e) => {
-
-			// Material-design input effect
 			inputContainer.classList.toggle('has-content', !!e.target.value);
-
-			// Validate input
 			inputValidator(e);
+			Forms.validate(form);
 		});
 
-		// Watch for first blue event to start validating
+		// Watch for first blur event to start validating
 		inputField.addEventListener('blur', watchBlur);
 	}
 
-	function init() {
-		const inputContainers = document.querySelectorAll('label');
+
+	function init(form) {
+		const inputContainers = form.querySelectorAll('label');
 
 		inputContainers.forEach((inputContainer) => {
-			watchForContent(inputContainer);
+			bindEvents(inputContainer, form);
 		});
 	}
+
 
 	return {
 		init: init
@@ -125,7 +117,7 @@ const inputs = (function() {
 
 
 
-const tabs = (function() {
+const Tabs = (function() {
 	const mainEl = document.querySelector('main');
 	const signInTab = document.querySelector('.tab-sign-in');
 	const signUpTab = document.querySelector('.tab-sign-up');
@@ -153,6 +145,6 @@ const tabs = (function() {
 
 
 window.onload = () => {
-	inputs.init();
-	tabs.init();
+	Forms.init();
+	Tabs.init();
 }

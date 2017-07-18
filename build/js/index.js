@@ -1,49 +1,43 @@
 'use strict';
 
-// const form = (function() {
-// 	// Set state of invalid
-// 	// For each text input,
-// 	// - valid when any content
-// 	// - if valid/invalid, update state
-// 	// For each email input
-// 	// - valid when email (regex in current keycloak)
-// 	// - update state
-// 	// For password
-// 	// - valid with regex from current keycload
-// 	// - update state
+var Forms = function () {
 
-// 	function validateForm(inputContainers, form) {
-// 		// check if all are valid
+	function isValid(form) {
+		var formFields = form.querySelectorAll('label');
 
-// 	}
+		var isValid = true;
+		formFields.forEach(function (el) {
+			if (!el.classList.contains('valid')) {
+				isValid = false;
+			}
+		});
+		return isValid;
+	}
 
-// 	function initForm(form) {
-// 		let formValid = false;
-// 		const formInputContainers = form.querySelectorAll('label');
-// 		const formInputs = form.querySelectorAll('input');
+	function validate(form) {
+		var submitButton = form.querySelector('button.submit');
+		if (isValid(form)) {
+			submitButton.removeAttribute('disabled');
+		} else {
+			submitButton.setAttribute('disabled', '');
+		}
+	}
 
-// 		formInputs.addEventListener('keyup', (e) => {
-// 			// validate form
-// 			validateForm(formInputContainers, form);
-// 		});
-// 	}
+	function init() {
+		var forms = document.querySelectorAll('form');
 
-// 	function init() {
-// 		const forms = document.querySelectorAll('form');
-// 		forms.forEach((form) => {
-// 			initForm(form);
-// 		})
-// 	}
-// })();
+		forms.forEach(function (form) {
+			Inputs.init(form);
+		});
+	}
 
+	return {
+		init: init,
+		validate: validate
+	};
+}();
 
-var inputs = function () {
-
-	// TODO:
-	// - Validation
-	//   - Inline validation and feedback
-	//   - Disable submit until all valid content
-	// - Display server responses
+var Inputs = function () {
 
 	function setValidState(labelEl, isValid, e) {
 		if (labelEl.classList.contains('has-content')) {
@@ -83,37 +77,31 @@ var inputs = function () {
 	}
 
 	function watchBlur(e) {
-		// Add 'touched' class to input
 		e.target.classList.add('touched');
-		e.target.removeEventListener('blur', watchBlur);
+		e.target.removeEventListener('blur', watchBlur); // do once
 	}
 
-	// watch for content to keep placeholder elevated
-	function watchForContent(inputContainer) {
+	function bindEvents(inputContainer, form) {
 		var inputLabel = inputContainer.querySelector('.label-copy');
 		var inputField = inputContainer.querySelector('input');
-		var inputType = inputField.attributes.type.value;
-		var inputValidator = getValidator(inputType);
+		var inputValidator = getValidator(inputField.attributes.type.value);
 
 		// Keyup events
 		inputField.addEventListener('keyup', function (e) {
-
-			// Material-design input effect
 			inputContainer.classList.toggle('has-content', !!e.target.value);
-
-			// Validate input
 			inputValidator(e);
+			Forms.validate(form);
 		});
 
-		// Watch for first blue event to start validating
+		// Watch for first blur event to start validating
 		inputField.addEventListener('blur', watchBlur);
 	}
 
-	function init() {
-		var inputContainers = document.querySelectorAll('label');
+	function init(form) {
+		var inputContainers = form.querySelectorAll('label');
 
 		inputContainers.forEach(function (inputContainer) {
-			watchForContent(inputContainer);
+			bindEvents(inputContainer, form);
 		});
 	}
 
@@ -122,7 +110,7 @@ var inputs = function () {
 	};
 }();
 
-var tabs = function () {
+var Tabs = function () {
 	var mainEl = document.querySelector('main');
 	var signInTab = document.querySelector('.tab-sign-in');
 	var signUpTab = document.querySelector('.tab-sign-up');
@@ -148,6 +136,6 @@ var tabs = function () {
 }();
 
 window.onload = function () {
-	inputs.init();
-	tabs.init();
+	Forms.init();
+	Tabs.init();
 };
