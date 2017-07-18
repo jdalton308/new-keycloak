@@ -216,20 +216,25 @@ label.toggle-switch {
     position: absolute;
     left: 9000px;
     top: 9000px; }
-    label.toggle-switch input[type="checkbox"]:checked + .switch-track .switch-button {
-      -ms-transform: translateX(13px);
-      -webkit-transform: translateX(13px);
-      transform: translateX(13px); }
+    label.toggle-switch input[type="checkbox"]:checked + .switch-track {
+      border-color: #16A9E1;
+      background-color: #16A9E1; }
+      label.toggle-switch input[type="checkbox"]:checked + .switch-track .switch-button {
+        -ms-transform: translateX(13px);
+        -webkit-transform: translateX(13px);
+        transform: translateX(13px); }
     label.toggle-switch input[type="checkbox"]:checked ~ .label-copy {
       opacity: 1; }
   label.toggle-switch .switch-track {
     display: inline-block;
     position: relative;
     width: 36px;
-    border: 2px solid #16A9E1;
-    background-color: #16A9E1;
+    border: 2px solid #CED2DB;
+    background-color: #AEB2BB;
     border-radius: 15px;
-    text-align: left; }
+    text-align: left;
+    -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
+    transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
     label.toggle-switch .switch-track .switch-button {
       display: block;
       width: 19px;
@@ -247,6 +252,10 @@ label.toggle-switch {
     font-size: 0.6rem;
     opacity: 0.7;
     color: #FFF; }
+  label.toggle-switch:hover .label-copy {
+    opacity: 1; }
+  label.toggle-switch:hover .switch-button {
+    box-shadow: 0 0 10px -3px #000; }
 
 button,
 .button {

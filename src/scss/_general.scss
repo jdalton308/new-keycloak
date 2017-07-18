@@ -249,6 +249,9 @@ label.toggle-switch {
 
 		&:checked {
 			+ .switch-track {
+				border-color: $blue;
+				background-color: $blue;
+
 				.switch-button {
 					@include transform( translateX(13px) );
 				}
@@ -262,10 +265,11 @@ label.toggle-switch {
 		display: inline-block;
 		position: relative;
 		width: 36px;
-		border: 2px solid $blue;
-		background-color: $blue;
+		border: 2px solid $grey-light;
+		background-color: $grey;
 		border-radius: 15px;
 		text-align: left;
+		@include transition();
 
 		.switch-button {
 			display: block;
@@ -285,6 +289,15 @@ label.toggle-switch {
 		font-size: 0.6rem;
 		opacity: 0.7;
 		color: $white;
+	}
+
+	&:hover {
+		.label-copy {
+			opacity: 1;
+		}
+		.switch-button {
+			box-shadow: 0 0 10px -3px $black;
+		}
 	}
 }
 
