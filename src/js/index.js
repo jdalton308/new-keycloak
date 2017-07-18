@@ -112,8 +112,9 @@ const Inputs = (function() {
 		}
 	}
 
-	function watchBlur(e) {
+	function watchBlur(e, validator) {
 		e.target.classList.add('touched');
+		validator(e);
 		e.target.removeEventListener('blur', watchBlur); // do once
 	}
 
@@ -131,7 +132,7 @@ const Inputs = (function() {
 		});
 
 		// Watch for first blur event to start validating
-		inputField.addEventListener('blur', watchBlur);
+		inputField.addEventListener('blur', (e) => watchBlur(e, inputValidator) );
 	}
 
 

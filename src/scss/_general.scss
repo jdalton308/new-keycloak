@@ -147,6 +147,11 @@ label {
 			color: $red;
 			@include transform( translateY(-25px) ); // animate in
 			@include transition(0.2s);
+
+			&.show {
+				color: $white;
+				@include transform( translateY(0) ); // animate in
+			}
 		}
 	}
 	.success-check {
@@ -199,6 +204,11 @@ label {
 		.label-copy {
 			color: $green;
 		}
+		.message-mask {
+			.message {
+				@include transform( translateY(-25px) );
+			}
+		}
 		.success-check {
 			path {
 				animation: drawDash 0.4s forwards $curve1; 
@@ -209,8 +219,11 @@ label {
 		.label-copy {
 			color: $red;
 		}
-		.message {
-			@include transform( translateY(0) );
+		.message-mask {
+			.message {
+				color: $red;
+				@include transform( translateY(0) );
+			}
 		}
 	}
 

@@ -134,8 +134,9 @@ var Inputs = function () {
 		}
 	}
 
-	function watchBlur(e) {
+	function watchBlur(e, validator) {
 		e.target.classList.add('touched');
+		validator(e);
 		e.target.removeEventListener('blur', watchBlur); // do once
 	}
 
@@ -152,7 +153,9 @@ var Inputs = function () {
 		});
 
 		// Watch for first blur event to start validating
-		inputField.addEventListener('blur', watchBlur);
+		inputField.addEventListener('blur', function (e) {
+			return watchBlur(e, inputValidator);
+		});
 	}
 
 	function init(form) {
