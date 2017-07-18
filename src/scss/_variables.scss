@@ -17,7 +17,7 @@ $red:         #FF3C38;
 // $red:         #bc3a3c;
 
 $blue:        #16A9E1;
-$blue-dark:   #485068;
+$blue-dark:   #172037;
 $blue-hover:  darken($blue, 10%);
 
 $text-color:   $white;
@@ -85,4 +85,13 @@ $curve1: cubic-bezier(.22,.07,.23,.99);
   -webkit-animation: $name $duration $timing $delay $iterations $direction $fill-mode;
   animation: $name $duration $timing $delay $iterations $direction $fill-mode;
 
+}
+
+
+//// Keyframes ////
+//-------------
+@include keyframes(drawDash) {
+  100% {
+    stroke-dashoffset: 0;
+  }
 }

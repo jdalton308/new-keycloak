@@ -129,6 +129,38 @@ label {
 		pointer-events: none;
 		@include transition();
 	}
+	.message-mask {
+		display: block;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		padding-top: 3px;
+		text-align: left;
+		overflow: hidden;
+		pointer-events: none;
+
+		.message {
+			display: block;
+			font-size: 0.6rem;
+			line-height: 1em;
+			color: $red;
+			@include transform( translateY(-25px) ); // animate in
+			@include transition(0.2s);
+		}
+	}
+	.success-check {
+		position: absolute;
+		right: 4px;
+		bottom: 7px;
+		width: 17px;
+		height: 14px;
+
+		path {
+			stroke-dasharray: 22;
+			stroke-dashoffset: 22;
+		}
+	}
 	input[type="text"],
 	input[type="email"],
 	input[type="password"] {
@@ -167,10 +199,18 @@ label {
 		.label-copy {
 			color: $green;
 		}
+		.success-check {
+			path {
+				animation: drawDash 0.4s forwards $curve1; 
+			}
+		}
 	}
 	&.error {
 		.label-copy {
 			color: $red;
+		}
+		.message {
+			@include transform( translateY(0) );
 		}
 	}
 
