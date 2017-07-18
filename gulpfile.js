@@ -3,6 +3,7 @@ const gulp = require('gulp');
 const gutil = require('gulp-util');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
+// const uglify = require('gulp-uglify');
 const htmlMin = require('gulp-htmlmin');
 const server = require('gulp-server-livereload');
 const babel = require('gulp-babel');
@@ -37,6 +38,7 @@ gulp.task('scripts', () => {
     .pipe(babel({
         presets: ['es2015']
     }))
+    // .pipe(uglify())
     .on('error', onError)
     .pipe(gulp.dest('./build/js/'));
 });

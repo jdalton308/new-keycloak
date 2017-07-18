@@ -172,6 +172,9 @@ button,
     cursor: default;
     background-color: #AEB2BB;
     opacity: 0.6; }
+  button:active,
+  .button:active {
+    background-color: #16A9E1; }
   button.hollow,
   .button.hollow {
     font-size: 0.8rem;
@@ -200,6 +203,14 @@ button,
       button.hollow:hover svg path,
       .button.hollow:hover svg path {
         fill: #16A9E1; }
+    button.hollow:active,
+    .button.hollow:active {
+      color: #FFF;
+      border-color: #FFF;
+      background-color: transparent; }
+      button.hollow:active svg path,
+      .button.hollow:active svg path {
+        fill: #FFF; }
 
 .icon-base {
   fill: #16A9E1;

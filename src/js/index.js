@@ -1,5 +1,34 @@
 
+
+// Forms
+//------------------
+
 const Forms = (function() {
+
+	function buildData(form) {
+		const rawData = new FormData(form);
+		let dataObj = {};
+
+		for (let [key, val] of rawData) {
+			dataObj[key] = val;
+		}
+
+		return dataObj;
+	}
+
+	function submitForm(form) {
+		const data = buildData(form);
+		// Submit data...
+	}
+
+	function watchSubmit(form) {
+		const submitButton = form.querySelector('button.submit');
+
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			submitForm(e.target);
+		});
+	}
 
 	function isValid(form) {
 		const formFields = form.querySelectorAll('label');
@@ -15,6 +44,7 @@ const Forms = (function() {
 
 	function validate(form) {
 		const submitButton = form.querySelector('button.submit');
+		
 		if (isValid(form)) {
 			submitButton.removeAttribute('disabled');
 		} else {
@@ -27,7 +57,8 @@ const Forms = (function() {
 
 		forms.forEach((form) => {
 			Inputs.init(form);
-		})
+			watchSubmit(form);
+		});
 	}
 
 
@@ -38,6 +69,9 @@ const Forms = (function() {
 })();
 
 
+
+// Inputs: Validation and Material
+//------------------
 
 const Inputs = (function() {
 
@@ -117,6 +151,9 @@ const Inputs = (function() {
 
 
 
+// Tabs toggle
+//------------------
+
 const Tabs = (function() {
 	const mainEl = document.querySelector('main');
 	const signInTab = document.querySelector('.tab-sign-in');
@@ -143,6 +180,9 @@ const Tabs = (function() {
 })();
 
 
+
+// Do it
+//----------------
 
 window.onload = () => {
 	Forms.init();

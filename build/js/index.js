@@ -1,6 +1,59 @@
 'use strict';
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+// Forms
+//------------------
+
 var Forms = function () {
+
+	function buildData(form) {
+		var rawData = new FormData(form);
+		var dataObj = {};
+
+		var _iteratorNormalCompletion = true;
+		var _didIteratorError = false;
+		var _iteratorError = undefined;
+
+		try {
+			for (var _iterator = rawData[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+				var _step$value = _slicedToArray(_step.value, 2),
+				    key = _step$value[0],
+				    val = _step$value[1];
+
+				dataObj[key] = val;
+			}
+		} catch (err) {
+			_didIteratorError = true;
+			_iteratorError = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion && _iterator.return) {
+					_iterator.return();
+				}
+			} finally {
+				if (_didIteratorError) {
+					throw _iteratorError;
+				}
+			}
+		}
+
+		return dataObj;
+	}
+
+	function submitForm(form) {
+		var data = buildData(form);
+		// Submit data...
+	}
+
+	function watchSubmit(form) {
+		var submitButton = form.querySelector('button.submit');
+
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
+			submitForm(e.target);
+		});
+	}
 
 	function isValid(form) {
 		var formFields = form.querySelectorAll('label');
@@ -16,6 +69,7 @@ var Forms = function () {
 
 	function validate(form) {
 		var submitButton = form.querySelector('button.submit');
+
 		if (isValid(form)) {
 			submitButton.removeAttribute('disabled');
 		} else {
@@ -28,6 +82,7 @@ var Forms = function () {
 
 		forms.forEach(function (form) {
 			Inputs.init(form);
+			watchSubmit(form);
 		});
 	}
 
@@ -36,6 +91,9 @@ var Forms = function () {
 		validate: validate
 	};
 }();
+
+// Inputs: Validation and Material
+//------------------
 
 var Inputs = function () {
 
@@ -110,6 +168,9 @@ var Inputs = function () {
 	};
 }();
 
+// Tabs toggle
+//------------------
+
 var Tabs = function () {
 	var mainEl = document.querySelector('main');
 	var signInTab = document.querySelector('.tab-sign-in');
@@ -134,6 +195,9 @@ var Tabs = function () {
 		init: init
 	};
 }();
+
+// Do it
+//----------------
 
 window.onload = function () {
 	Forms.init();
