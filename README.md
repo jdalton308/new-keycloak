@@ -16,7 +16,7 @@ Gulp is used as a build tool.  The config lives solely in the `/gulpfile.js` fil
 
 
 #### JS
-All of the logic, as well as helper functions, are found in the `/src/js` directory.  When developing, edit the files here only.  Any edits to files within the `/build/` directory will be overwritten and lost.
+All of the logic, as well as helper functions, are found in the `/src/js/` directory.  When developing, edit the files here only.  Any edits to files within the `/build/` directory will be overwritten and lost.
 
 No frameworks or libraries are used. However, [Babel](https://babeljs.io/) is used to take advantage of the latest js specs, so ES2015 syntax is used throughout.
 
@@ -26,4 +26,7 @@ Sass is used as a CSS precompiler, and the .scss files are found in the `/src/cs
 
 
 #### HTML
-HTML files are minified using a gulp task, and piped from the `/src/` directory to the `/build/`.
+*Partials*
+The `<partial></partial>` tags are used to modularize the HTML a bit, replaced through a gulp task [gulp-html-partial](https://www.npmjs.com/package/gulp-html-partial).  Gulp replaces these with their indicated "partial", which hopefully makes them more maintainable and readable.  The partial files are found in the `/src/html/partials/` folder.
+
+HTML files are also minified using a gulp task, and piped from the `/src/` directory to the `/build/`.

@@ -126,7 +126,7 @@ label {
     top: 100%;
     left: 0;
     width: 100%;
-    padding-top: 3px;
+    padding-top: 5px;
     text-align: left;
     overflow: hidden;
     pointer-events: none; }
@@ -152,8 +152,8 @@ label {
     width: 17px;
     height: 14px; }
     label .success-check path {
-      stroke-dasharray: 22;
-      stroke-dashoffset: 22; }
+      stroke-dasharray: 22px;
+      stroke-dashoffset: 22px; }
   label input[type="text"],
   label input[type="email"],
   label input[type="password"] {
@@ -193,6 +193,10 @@ label {
     transform: translateY(-25px); }
   label.valid .success-check path {
     animation: drawDash 0.4s forwards cubic-bezier(0.22, 0.07, 0.23, 0.99); }
+  label.valid input[type="text"],
+  label.valid input[type="email"],
+  label.valid input[type="password"] {
+    border-color: #97CC04; }
   label.error .label-copy {
     color: #FF3C38; }
   label.error .message-mask .message {
@@ -200,6 +204,49 @@ label {
     -ms-transform: translateY(0);
     -webkit-transform: translateY(0);
     transform: translateY(0); }
+  label.error input[type="text"],
+  label.error input[type="email"],
+  label.error input[type="password"] {
+    border-color: #FF3C38; }
+
+label.toggle-switch {
+  cursor: pointer; }
+  label.toggle-switch input[type="checkbox"] {
+    visibility: hidden;
+    position: absolute;
+    left: 9000px;
+    top: 9000px; }
+    label.toggle-switch input[type="checkbox"]:checked + .switch-track .switch-button {
+      -ms-transform: translateX(13px);
+      -webkit-transform: translateX(13px);
+      transform: translateX(13px); }
+    label.toggle-switch input[type="checkbox"]:checked ~ .label-copy {
+      opacity: 1; }
+  label.toggle-switch .switch-track {
+    display: inline-block;
+    position: relative;
+    width: 36px;
+    border: 2px solid #16A9E1;
+    background-color: #16A9E1;
+    border-radius: 15px;
+    text-align: left; }
+    label.toggle-switch .switch-track .switch-button {
+      display: block;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background-color: #FFF;
+      -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
+      transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
+  label.toggle-switch .label-copy {
+    position: static;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+    padding-top: 4px;
+    font-size: 0.6rem;
+    opacity: 0.7;
+    color: #FFF; }
 
 button,
 .button {
@@ -385,14 +432,15 @@ main .tab-container {
     main .tab-container form .input-container {
       padding-top: 20px;
       margin-bottom: 60px; }
-      main .tab-container form .input-container .keep-signed-in {
-        padding: 20px 0;
-        text-align: left;
-        font-size: 0.6rem; }
     main .tab-container form .fine-print {
       margin-top: 8px; }
     main .tab-container form#form-sign-in .input-container label:first-child {
       margin-bottom: 32px; }
+    main .tab-container form#form-sign-in .input-container .keep-signed-in {
+      padding: 20px 0;
+      text-align: left; }
+      main .tab-container form#form-sign-in .input-container .keep-signed-in .toggle-switch {
+        margin: 0; }
     main .tab-container form#form-sign-up .input-container label {
       margin-bottom: 32px; }
       main .tab-container form#form-sign-up .input-container label:last-of-type {

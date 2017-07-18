@@ -166,13 +166,6 @@ main {
 			.input-container {
 				padding-top: 20px;
 				margin-bottom: 60px;
-
-
-				.keep-signed-in {
-					padding: 20px 0;
-					text-align: left;
-					font-size: 0.6rem;
-				}
 			}
 
 			.fine-print {
@@ -184,6 +177,14 @@ main {
 					label {
 						&:first-child {
 							margin-bottom: 32px;
+						}
+					}
+					.keep-signed-in {
+						padding: 20px 0;
+						text-align: left;
+
+						.toggle-switch {
+							margin: 0;
 						}
 					}
 				}

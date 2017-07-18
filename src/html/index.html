@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="themeColor" content="#4A90E2">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Athlinks | Log In</title>
+	<meta name="description" content="Create bookmarks!">
+
+	<link rel="stylesheet" charset="utf-8" href="/css/main.css">
+</head>
+<body>
+
+	<div class="content-wrapper">
+
+
+		<!-- Logo & Landing text -->
+		<header>
+			<img src="/img/logo-horizontal-white.svg" alt="Athlinks" class="logo">
+			<p class="value-prop">The largest online database of official race results in the world. If you’ve ever finished a race, your results are here.</p>
+		</header>
+		
+		<main class="sign-in">
+
+
+			<!-- Tabs -->
+			<nav>
+				<button class="tab-sign-in">SIGN IN</button>
+				<button class="tab-sign-up">SIGN UP</button>
+				<span class="underline-highlight"></span>
+			</nav>
+
+			<div class="tab-container">
+
+
+				<!-- Sign In Form -->
+				<form id="form-sign-in" name="sign-in" autocomplete="off">
+					<h4 class="line-title">Sign In With</h4>
+					<div class="social-button-container">
+						<partial src="social-buttons.html"></partial>
+					</div>
+
+					<h4 class="line-title">Or</h4>
+					<div class="input-container">
+						<label for="email">
+							<input id="email" name="email" type="email">
+							<span class="label-copy">Email</span>
+							<partial src="checkmark.html"></partial>
+							<span class="message-mask">
+								<span class="message">Please enter a valid email</span>
+							</span>
+						</label>
+						<label for="password">
+							<input id="password" name="password" type="password">
+							<span class="label-copy">Password</span>
+							<partial src="checkmark.html"></partial>
+							<span class="message-mask">
+								<span class="message">Password must be 8 characters</span>
+							</span>
+						</label>
+						<div class="keep-signed-in">
+							<label for="stay-in" class="toggle-switch">
+								<input type="checkbox" id="stay-in" name="stay-in">
+								<span class="switch-track">
+									<span class="switch-button"></span>
+								</span>
+								<span class="label-copy">Keep me logged in</span>
+							</label>
+						</div>
+					</div>
+					<button disabled class="full-width submit" type="submit">Submit</button>
+				</form>
+
+
+				<!-- Sign Up Form -->
+				<form id="form-sign-up" name="sign-up" autocomplete="off">
+					<h4 class="line-title">Sign Up With</h4>
+					<div class="social-button-container">
+						<partial src="social-buttons.html"></partial>
+					</div>
+
+					<h4 class="line-title">Or</h4>
+					<div class="input-container">
+						<div class="multi-input-line">
+							<label for="first">
+								<input id="first" name="first" type="text">
+								<span class="label-copy">First Name</span>
+								<partial src="checkmark.html"></partial>
+								<span class="message-mask">
+									<span class="message">First Name is required</span>
+								</span>
+							</label>
+							<label for="last">
+								<input id="last" name="last" type="text">
+								<span class="label-copy">Last Name</span>
+								<partial src="checkmark.html"></partial>
+								<span class="message-mask">
+									<span class="message">Last Name is required</span>
+								</span>
+							</label>
+						</div>
+						<label for="email">
+							<input id="email" name="email" type="email">
+							<span class="label-copy">Email</span>
+							<partial src="checkmark.html"></partial>
+							<span class="message-mask">
+								<span class="message">Valid email required</span>
+							</span>
+						</label>
+						<label for="password">
+							<input id="password" name="password" type="password">
+							<span class="label-copy">Password</span>
+							<partial src="checkmark.html"></partial>
+							<span class="message-mask">
+								<span class="message show">Password must be 8 characters</span>
+							</span>
+						</label>
+					</div>
+					<button disabled class="full-width submit" type="button">Submit</button>
+					<p class="fine-print">By signing up you agree to our <a href="/">Terms of Service</a> and <a href="/">Privacy Policy</a>.</p>
+				</form>
+
+			</div>
+		</main>
+
+		<div class="landing-button-container">
+			<button type="button">Sign Up</button>
+			<button class="hollow" type="button">Sign In</button>
+		</div>
+	</div>
+
+	<script src="/js/index.js"></script>
+</body>
+</html>

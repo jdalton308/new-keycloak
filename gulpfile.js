@@ -3,8 +3,9 @@ const gulp = require('gulp');
 const gutil = require('gulp-util');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
-// const uglify = require('gulp-uglify');
+const uglify = require('gulp-uglify');
 const htmlMin = require('gulp-htmlmin');
+const htmlPartial = require('gulp-html-partial');
 const server = require('gulp-server-livereload');
 const babel = require('gulp-babel');
 
@@ -15,7 +16,7 @@ const styleFiles = [
 // 		'./src/js/**/*.js'
 // 	];
 const htmlFiles = [
-		'./src/**/*.html'
+		'./src/html/*.html'
 	];
 
 function onError(err) {
@@ -38,13 +39,16 @@ gulp.task('scripts', () => {
     .pipe(babel({
         presets: ['es2015']
     }))
-    // .pipe(uglify())
+    .pipe(uglify())
     .on('error', onError)
     .pipe(gulp.dest('./build/js/'));
 });
 
 gulp.task('html', () => {
 	gulp.src(htmlFiles)
+    .pipe(htmlPartial({
+      basePath: './src/html/partials/'
+    }))
 		.pipe(htmlMin({
 			collapseWhitespace: true
 		}))

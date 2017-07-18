@@ -18,7 +18,7 @@ const Forms = (function() {
 
 	function submitForm(form) {
 		const data = buildData(form);
-		// Submit data...
+		// Submit data here...
 	}
 
 	function watchSubmit(form) {
@@ -160,18 +160,34 @@ const Tabs = (function() {
 	const signInTab = document.querySelector('.tab-sign-in');
 	const signUpTab = document.querySelector('.tab-sign-up');
 
+	function setTab(name) {
+		mainEl.className = name;
+	}
+
+	function checkHash() {
+		const hash = window.location.hash;
+
+		if ((hash === '#sign-in') || (hash === '#sign-up')) {
+			setTab(hash.substring(1));
+		}
+	}
+
 	function bindEvents() {
 		signInTab.addEventListener('click', (e) => {
-			mainEl.classList.add('sign-in');
-			mainEl.classList.remove('sign-up');
+			window.location.hash = 'sign-in';
 		});
 		signUpTab.addEventListener('click', (e) => {
-			mainEl.classList.add('sign-up');
-			mainEl.classList.remove('sign-in');
+			window.location.hash = 'sign-up';
+		});
+
+		// Hashchang event is used to change tabs
+		window.addEventListener('hashchange', (e) => {
+			checkHash();
 		});
 	}
 
 	function init() {
+		checkHash();
 		bindEvents();
 	}
 
