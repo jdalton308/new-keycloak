@@ -44,7 +44,11 @@ html {
   max-width: 450px;
   padding: 0 24px;
   margin: 0 auto;
-  overflow-y: hidden; }
+  overflow-y: hidden;
+  opacity: 0;
+  transition: opacity 0.1s; }
+  .content-wrapper.show {
+    opacity: 1; }
   @media (min-width: 768px) {
     .content-wrapper {
       padding: 0 32px;
@@ -412,6 +416,16 @@ body {
           margin-bottom: 60px; }
           body.show-form header .logo {
             height: 50px; } }
+    body.show-form.no-animate {
+      transition: none; }
+      body.show-form.no-animate header .logo {
+        transition: none; }
+      body.show-form.no-animate header .value-prop {
+        transition: none; }
+      body.show-form.no-animate main {
+        transition: opacity 0.6s 0.3s linear, transform 0.4s 0.3s cubic-bezier(0.12, 0.49, 0.44, 0.94); }
+      body.show-form.no-animate .landing-button-container {
+        transition: none; }
 
 main.sign-in nav button.tab-sign-in {
   color: #FFF;

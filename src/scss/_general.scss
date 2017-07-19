@@ -22,6 +22,12 @@ html {
 	padding: 0 24px;
 	margin: 0 auto;
 	overflow-y: hidden;
+	opacity: 0;
+	transition: opacity 0.1s;
+
+	&.show {
+		opacity: 1;
+	}
 
 	@media (min-width: $mobile) {
 		padding: 0 32px;

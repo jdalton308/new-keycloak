@@ -165,10 +165,13 @@ const Tabs = (function() {
 		mainEl.className = name;
 	}
 
-	function checkHash() {
+	function checkHash(isInitialLoad = false) {
 		const hash = window.location.hash;
 
 		if ((hash === '#sign-in') || (hash === '#sign-up')) {
+			if (isInitialLoad) {
+				bodyEl.classList.add('no-animate');
+			}
 			bodyEl.classList.add('show-form');
 			setTab(hash.substring(1));
 		}
@@ -189,7 +192,7 @@ const Tabs = (function() {
 	}
 
 	function init() {
-		checkHash();
+		checkHash(true);
 		bindEvents();
 	}
 
@@ -200,10 +203,29 @@ const Tabs = (function() {
 
 
 
+// Gracefully show content
+//------------------
+
+const Content = (function(){
+	
+	function show() {
+		const contentEl = document.querySelector('.content-wrapper');
+		contentEl.classList.add('show');
+	}
+
+	return {
+		show: show
+	};
+})();
+
+
+
+
 // Do it
 //----------------
 
 window.onload = () => {
 	Forms.init();
 	Tabs.init();
+	Content.show();
 }
