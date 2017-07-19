@@ -159,6 +159,7 @@ const Tabs = (function() {
 	const mainEl = document.querySelector('main');
 	const signInTab = document.querySelector('.tab-sign-in');
 	const signUpTab = document.querySelector('.tab-sign-up');
+	const bodyEl = document.querySelector('body');
 
 	function setTab(name) {
 		mainEl.className = name;
@@ -168,6 +169,7 @@ const Tabs = (function() {
 		const hash = window.location.hash;
 
 		if ((hash === '#sign-in') || (hash === '#sign-up')) {
+			bodyEl.classList.add('show-form');
 			setTab(hash.substring(1));
 		}
 	}

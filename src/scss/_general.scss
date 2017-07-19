@@ -319,12 +319,16 @@ button,
 	color: $white;
 	cursor: pointer;
 	background-color: $blue;
+	text-align: center;
 	@include transition();
 
 	&.full-width {
 		width: 100%;
 	}
 
+	&:visited {
+		color: $white;
+	}
 	&:hover {
 		background-color: $blue-hover;
 	}
