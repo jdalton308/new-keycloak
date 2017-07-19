@@ -211,7 +211,7 @@ label {
 		}
 		.success-check {
 			path {
-				animation: drawDash 0.4s forwards $curve1; 
+				animation: drawDash 0.2s forwards $curve1; 
 			}
 		}
 		input[type="text"],
@@ -241,12 +241,16 @@ label {
 label.toggle-switch {
 	cursor: pointer;
 
+	// Hide actual checkbox
 	input[type="checkbox"] {
 		visibility: hidden;
 		position: absolute;
-		left: 9000px;
-		top: 9000px;
+		opacity: 0;
+		z-index: -2;
+		top: 0;
+		left: 0;
 
+		// Checked state
 		&:checked {
 			+ .switch-track {
 				border-color: $blue;
