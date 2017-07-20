@@ -54,6 +54,46 @@ html {
       padding: 0 32px;
       overflow-y: visible; } }
 
+body {
+  min-height: 100vh;
+  max-width: 100vw;
+  padding-bottom: 60px;
+  background-color: #172037;
+  background-image: url("/img/leadville_blue.png");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  overflow-x: hidden; }
+
+body .loader {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: opacity 0.3s; }
+  body .loader .loading-graphic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+
+body.loading {
+  overflow: hidden; }
+  body.loading .loader {
+    opacity: 1;
+    pointer-events: auto; }
+
 h1,
 h2,
 h3,
@@ -67,7 +107,8 @@ h1 {
   color: #000; }
 
 h2 {
-  font-size: 2.3rem; }
+  font-weight: 700;
+  font-size: 1.2rem; }
 
 h4 {
   font-size: 0.6rem;
@@ -107,161 +148,10 @@ a {
     color: #1186b3; }
 
 p {
-  margin: 0; }
+  margin: 0;
+  font-size: 0.7rem; }
   p.fine-print {
     font-size: 0.6rem; }
-
-label {
-  position: relative;
-  display: block; }
-  label .label-copy {
-    position: absolute;
-    left: 0;
-    bottom: 3px;
-    display: inline-block;
-    font-size: 0.8rem;
-    color: #FFF;
-    pointer-events: none;
-    -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
-    transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
-  label .message-mask {
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding-top: 5px;
-    text-align: left;
-    overflow: hidden;
-    pointer-events: none; }
-    label .message-mask .message {
-      display: block;
-      font-size: 0.6rem;
-      line-height: 1em;
-      color: #FF3C38;
-      -ms-transform: translateY(-25px);
-      -webkit-transform: translateY(-25px);
-      transform: translateY(-25px);
-      -webkit-transition: all 0.2s cubic-bezier(0.22, 0.07, 0.23, 0.99);
-      transition: all 0.2s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
-      label .message-mask .message.show {
-        color: #FFF;
-        -ms-transform: translateY(0);
-        -webkit-transform: translateY(0);
-        transform: translateY(0); }
-  label .success-check {
-    position: absolute;
-    right: 4px;
-    bottom: 7px;
-    width: 17px;
-    height: 14px; }
-    label .success-check path {
-      stroke-dasharray: 22px;
-      stroke-dashoffset: 22px; }
-  label input[type="text"],
-  label input[type="email"],
-  label input[type="password"] {
-    display: block;
-    width: 100%;
-    padding: 12px 0 3px;
-    background-color: transparent;
-    font-family: "Proxima Nova", Arial, sans-serif;
-    font-size: 0.8rem;
-    line-height: 1em;
-    color: #FFF;
-    border: 0;
-    border-bottom: 1px solid #FFF;
-    -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
-    transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
-    label input[type="text"]:focus,
-    label input[type="email"]:focus,
-    label input[type="password"]:focus {
-      border-color: #16A9E1; }
-      label input[type="text"]:focus + .label-copy,
-      label input[type="email"]:focus + .label-copy,
-      label input[type="password"]:focus + .label-copy {
-        -ms-transform: translateY(-22px) scale(0.7);
-        -webkit-transform: translateY(-22px) scale(0.7);
-        transform: translateY(-22px) scale(0.7);
-        transform-origin: 0% 50%; }
-  label.has-content .label-copy {
-    -ms-transform: translateY(-22px) scale(0.7);
-    -webkit-transform: translateY(-22px) scale(0.7);
-    transform: translateY(-22px) scale(0.7);
-    transform-origin: 0% 50%; }
-  label.valid .label-copy {
-    color: #97CC04; }
-  label.valid .message-mask .message {
-    -ms-transform: translateY(-25px);
-    -webkit-transform: translateY(-25px);
-    transform: translateY(-25px); }
-  label.valid .success-check path {
-    animation: drawDash 0.2s forwards cubic-bezier(0.22, 0.07, 0.23, 0.99); }
-  label.valid input[type="text"],
-  label.valid input[type="email"],
-  label.valid input[type="password"] {
-    border-color: #97CC04; }
-  label.error .label-copy {
-    color: #FF3C38; }
-  label.error .message-mask .message {
-    color: #FF3C38;
-    -ms-transform: translateY(0);
-    -webkit-transform: translateY(0);
-    transform: translateY(0); }
-  label.error input[type="text"],
-  label.error input[type="email"],
-  label.error input[type="password"] {
-    border-color: #FF3C38; }
-
-label.toggle-switch {
-  cursor: pointer; }
-  label.toggle-switch input[type="checkbox"] {
-    visibility: hidden;
-    position: absolute;
-    opacity: 0;
-    z-index: -2;
-    top: 0;
-    left: 0; }
-    label.toggle-switch input[type="checkbox"]:checked + .switch-track {
-      border-color: #16A9E1;
-      background-color: #16A9E1; }
-      label.toggle-switch input[type="checkbox"]:checked + .switch-track .switch-button {
-        -ms-transform: translateX(13px);
-        -webkit-transform: translateX(13px);
-        transform: translateX(13px); }
-    label.toggle-switch input[type="checkbox"]:checked ~ .label-copy {
-      opacity: 1; }
-  label.toggle-switch .switch-track {
-    display: inline-block;
-    position: relative;
-    width: 36px;
-    border: 2px solid #CED2DB;
-    background-color: #AEB2BB;
-    border-radius: 15px;
-    text-align: left;
-    -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
-    transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
-    label.toggle-switch .switch-track .switch-button {
-      display: block;
-      width: 19px;
-      height: 19px;
-      border-radius: 50%;
-      background-color: #FFF;
-      -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
-      transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
-  label.toggle-switch .label-copy {
-    position: static;
-    display: inline-block;
-    vertical-align: top;
-    margin-left: 10px;
-    padding-top: 4px;
-    font-size: 0.6rem;
-    opacity: 0.7;
-    color: #FFF; }
-  label.toggle-switch:hover .label-copy {
-    opacity: 1; }
-  label.toggle-switch:hover .switch-button {
-    box-shadow: 0 0 10px -3px #000; }
 
 button,
 .button {
@@ -331,22 +221,204 @@ button,
       .button.hollow:active svg path {
         fill: #FFF; }
 
-.icon-base {
-  fill: #16A9E1;
+label {
+  position: relative;
+  display: block; }
+  label .label-copy {
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #FFF;
+    pointer-events: none;
+    -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
+    transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
+  label .message-mask {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding-top: 5px;
+    text-align: left;
+    overflow: hidden;
+    pointer-events: none; }
+    label .message-mask .message {
+      display: block;
+      font-size: 0.6rem;
+      line-height: 1em;
+      color: #FF3C38;
+      -ms-transform: translateY(-25px);
+      -webkit-transform: translateY(-25px);
+      transform: translateY(-25px);
+      -webkit-transition: all 0.2s cubic-bezier(0.22, 0.07, 0.23, 0.99);
+      transition: all 0.2s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
+      label .message-mask .message.show {
+        color: #FFF;
+        -ms-transform: translateY(0);
+        -webkit-transform: translateY(0);
+        transform: translateY(0); }
+  label .success-check {
+    position: absolute;
+    right: 4px;
+    bottom: 7px;
+    width: 17px;
+    height: 14px; }
+    label .success-check path {
+      stroke-dasharray: 22px;
+      stroke-dashoffset: 22px; }
+  label input[type="text"],
+  label input[type="email"],
+  label input[type="number"],
+  label input[type="password"] {
+    display: block;
+    width: 100%;
+    padding: 12px 0 3px;
+    background-color: transparent;
+    font-family: "Proxima Nova", Arial, sans-serif;
+    font-size: 0.8rem;
+    line-height: 1em;
+    color: #FFF;
+    border: 0;
+    border-bottom: 1px solid #FFF;
+    -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
+    transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
+    label input[type="text"]:focus,
+    label input[type="email"]:focus,
+    label input[type="number"]:focus,
+    label input[type="password"]:focus {
+      border-color: #16A9E1; }
+      label input[type="text"]:focus + .label-copy,
+      label input[type="email"]:focus + .label-copy,
+      label input[type="number"]:focus + .label-copy,
+      label input[type="password"]:focus + .label-copy {
+        -ms-transform: translateY(-22px) scale(0.7);
+        -webkit-transform: translateY(-22px) scale(0.7);
+        transform: translateY(-22px) scale(0.7);
+        transform-origin: 0% 50%; }
+    label input[type="text"].half-size,
+    label input[type="email"].half-size,
+    label input[type="number"].half-size,
+    label input[type="password"].half-size {
+      width: 50%; }
+  label.has-content .label-copy {
+    -ms-transform: translateY(-22px) scale(0.7);
+    -webkit-transform: translateY(-22px) scale(0.7);
+    transform: translateY(-22px) scale(0.7);
+    transform-origin: 0% 50%; }
+  label.valid .label-copy {
+    color: #97CC04; }
+  label.valid .message-mask .message {
+    -ms-transform: translateY(-25px);
+    -webkit-transform: translateY(-25px);
+    transform: translateY(-25px); }
+  label.valid .success-check path {
+    animation: drawDash 0.2s forwards cubic-bezier(0.22, 0.07, 0.23, 0.99); }
+  label.valid input[type="text"],
+  label.valid input[type="email"],
+  label.valid input[type="password"] {
+    border-color: #97CC04; }
+  label.error .label-copy {
+    color: #FF3C38; }
+  label.error .message-mask .message {
+    color: #FF3C38;
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
+  label.error input[type="text"],
+  label.error input[type="email"],
+  label.error input[type="number"],
+  label.error input[type="password"] {
+    border-color: #FF3C38; }
+
+select {
+  display: block;
+  width: 100%;
+  padding: 2px 0 3px;
+  background-color: transparent;
+  font-family: "Proxima Nova", Arial, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1em;
+  color: #FFF;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #FFF;
   -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
   transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
+  select:focus {
+    border-color: #16A9E1; }
+  select.half-size {
+    width: 50%; }
+  select option {
+    padding-left: 0; }
 
-body {
-  min-height: 100vh;
-  max-width: 100vw;
-  padding-bottom: 60px;
-  background-color: #172037;
-  background-image: url("/img/leadville_blue.png");
-  background-position: center;
-  background-size: auto 100vh;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  overflow-x: hidden; }
+.label {
+  font-size: 0.5rem;
+  color: #FFF; }
+
+.multi-input-line {
+  display: flex;
+  margin-bottom: 32px; }
+  .multi-input-line label,
+  .multi-input-line select {
+    flex: 1;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-right: 20px; }
+    .multi-input-line label:last-child,
+    .multi-input-line select:last-child {
+      margin: 0; }
+
+label.toggle-switch {
+  cursor: pointer; }
+  label.toggle-switch input[type="checkbox"] {
+    visibility: hidden;
+    position: absolute;
+    opacity: 0;
+    z-index: -2;
+    top: 0;
+    left: 0; }
+    label.toggle-switch input[type="checkbox"]:checked + .switch-track {
+      border-color: #16A9E1;
+      background-color: #16A9E1; }
+      label.toggle-switch input[type="checkbox"]:checked + .switch-track .switch-button {
+        -ms-transform: translateX(13px);
+        -webkit-transform: translateX(13px);
+        transform: translateX(13px); }
+    label.toggle-switch input[type="checkbox"]:checked ~ .label-copy {
+      opacity: 1; }
+  label.toggle-switch .switch-track {
+    display: inline-block;
+    position: relative;
+    width: 36px;
+    border: 2px solid #CED2DB;
+    background-color: #AEB2BB;
+    border-radius: 15px;
+    text-align: left;
+    -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
+    transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
+    label.toggle-switch .switch-track .switch-button {
+      display: block;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background-color: #FFF;
+      -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
+      transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
+  label.toggle-switch .label-copy {
+    position: static;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+    padding-top: 4px;
+    font-size: 0.6rem;
+    opacity: 0.7;
+    color: #FFF; }
+  label.toggle-switch:hover .label-copy {
+    opacity: 1; }
+  label.toggle-switch:hover .switch-button {
+    box-shadow: 0 0 10px -3px #000; }
 
 body {
   padding-top: 30vh;
@@ -401,7 +473,6 @@ body {
         transform: translateY(30px); }
     body.show-form main {
       height: auto;
-      overflow: visible;
       -ms-transform: translateY(0);
       -webkit-transform: translateY(0);
       transform: translateY(0);
@@ -415,7 +486,9 @@ body {
         body.show-form header {
           margin-bottom: 60px; }
           body.show-form header .logo {
-            height: 50px; } }
+            height: 50px; }
+        body.show-form main {
+          overflow: visible; } }
     body.show-form.no-animate {
       transition: none; }
       body.show-form.no-animate header .logo {
@@ -501,37 +574,52 @@ main .tab-container {
     pointer-events: none;
     -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
     transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
-    main .tab-container form .social-button-container {
-      padding: 26px 0 32px;
-      display: flex; }
-      main .tab-container form .social-button-container button {
-        flex: 1; }
-        main .tab-container form .social-button-container button:first-child {
-          margin-right: 20px; }
-    main .tab-container form .input-container {
-      padding-top: 20px;
-      margin-bottom: 60px; }
-    main .tab-container form .fine-print {
-      margin-top: 8px;
-      text-align: left; }
-    main .tab-container form#form-sign-in .input-container label:first-child {
-      margin-bottom: 32px; }
-    main .tab-container form#form-sign-in .input-container .keep-signed-in {
-      padding: 20px 0;
-      text-align: left; }
-      main .tab-container form#form-sign-in .input-container .keep-signed-in .toggle-switch {
-        margin: 0; }
-    main .tab-container form#form-sign-up .input-container label {
-      margin-bottom: 32px; }
-      main .tab-container form#form-sign-up .input-container label:last-of-type {
-        margin-bottom: 0; }
-    main .tab-container form#form-sign-up .input-container .multi-input-line {
-      display: flex;
-      margin-bottom: 32px; }
-      main .tab-container form#form-sign-up .input-container .multi-input-line label {
-        flex: 1;
-        display: inline-block;
-        margin-bottom: 0;
-        margin-right: 20px; }
-        main .tab-container form#form-sign-up .input-container .multi-input-line label:last-child {
-          margin: 0; }
+
+main form .social-button-container {
+  padding: 26px 0 32px;
+  display: flex; }
+  main form .social-button-container button {
+    flex: 1; }
+    main form .social-button-container button:first-child {
+      margin-right: 20px; }
+
+main form .input-container {
+  padding-top: 20px;
+  margin-bottom: 60px; }
+
+main form .fine-print {
+  margin-top: 8px;
+  text-align: left; }
+
+main form#form-sign-in .input-container label:first-child {
+  margin-bottom: 32px; }
+
+main form#form-sign-in .input-container .keep-signed-in {
+  padding: 20px 0;
+  text-align: left; }
+  main form#form-sign-in .input-container .keep-signed-in .toggle-switch {
+    margin: 0; }
+
+main form#form-sign-up .input-container label {
+  margin-bottom: 32px; }
+  main form#form-sign-up .input-container label:last-of-type {
+    margin-bottom: 0; }
+
+main #form-details {
+  display: none; }
+  main #form-details .title-container {
+    text-align: center;
+    margin-bottom: 20px; }
+    main #form-details .title-container h2 {
+      margin-bottom: 12px; }
+  main #form-details .input-container label {
+    margin-bottom: 32px; }
+  main #form-details .input-container .multi-input-line label {
+    margin-bottom: 0; }
+
+main.long-form nav,
+main.long-form .tab-container {
+  display: none; }
+
+main.long-form #form-details {
+  display: block; }

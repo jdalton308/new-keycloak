@@ -36,6 +36,66 @@ html {
 }
 
 
+
+// Background
+//----------
+body {
+	min-height: 100vh;
+	max-width: 100vw;
+	padding-bottom: 60px;
+	background-color: $blue-dark;
+	background-image: url('/img/leadville_blue.png');
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	overflow-x: hidden;
+
+	// @media (min-width: $mobile) {
+	// 	background-size: cover;
+	// }
+}
+
+
+
+// Loading
+//----------
+body {
+	.loader {
+		position: fixed;
+		z-index: 10;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		opacity: 0;
+		overflow: hidden;
+		pointer-events: none;
+		background-color: rgba(255,255,255,0.9);
+		transition: opacity 0.3s;
+
+		.loading-graphic {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 120px;
+			height: 120px;
+			@include transform( translate(-50%, -50%) );
+		}
+	}
+
+	&.loading {
+		overflow: hidden;
+
+		.loader {
+			opacity: 1;
+			pointer-events: auto;
+		}
+	}
+}
+
+
+
 // Text
 //---------
 h1,
@@ -51,7 +111,8 @@ h1 {
 	color: $black;
 }
 h2 {
-	font-size: 2.3rem;
+	font-weight: 700;
+	font-size: 1.2rem;
 }
 
 h4 {
@@ -103,213 +164,13 @@ a {
 
 p {
 	margin: 0;
+	font-size: 0.7rem;
 
 	&.fine-print {
 		font-size: 0.6rem;
 	}
 }
 
-
-// Utilities
-//---------
-// .no-wrap {
-// 	overflow: hidden;
-// 	white-space: nowrap;
-// 	text-overflow: ellipsis;
-// }
-
-
-// Forms
-//---------
-label {
-	position: relative;
-	display: block;
-
-	.label-copy {
-		position: absolute;
-		left: 0;
-		bottom: 3px;
-		display: inline-block;
-		font-size: 0.8rem;
-		color: $white;
-		pointer-events: none;
-		@include transition();
-	}
-	.message-mask {
-		display: block;
-		position: absolute;
-		top: 100%;
-		left: 0;
-		width: 100%;
-		padding-top: 5px;
-		text-align: left;
-		overflow: hidden;
-		pointer-events: none;
-
-		.message {
-			display: block;
-			font-size: 0.6rem;
-			line-height: 1em;
-			color: $red;
-			@include transform( translateY(-25px) ); // animate in
-			@include transition(0.2s);
-
-			&.show {
-				color: $white;
-				@include transform( translateY(0) ); // animate in
-			}
-		}
-	}
-	.success-check {
-		position: absolute;
-		right: 4px;
-		bottom: 7px;
-		width: 17px;
-		height: 14px;
-
-		path {
-			stroke-dasharray: 22px;
-			stroke-dashoffset: 22px;
-		}
-	}
-	input[type="text"],
-	input[type="email"],
-	input[type="password"] {
-		display: block;
-		width: 100%;
-		padding: 12px 0 3px;
-		background-color: transparent;
-		font-family: $sans-family;
-		font-size: 0.8rem;
-		line-height: 1em;
-		color: $text-color;
-		border: 0;
-		border-bottom: 1px solid $white;
-		@include transition();
-
-		&:focus {
-			border-color: $blue;
-
-			+ .label-copy {
-				@include transform( translateY(-22px) scale(0.7) );
-				transform-origin: 0% 50%;
-			}
-		}
-
-	}
-
-	&.has-content {
-		.label-copy {
-			@include transform( translateY(-22px) scale(0.7) );
-			transform-origin: 0% 50%;
-		}
-	}
-
-	// input validation
-	&.valid {
-		.label-copy {
-			color: $green;
-		}
-		.message-mask {
-			.message {
-				@include transform( translateY(-25px) );
-			}
-		}
-		.success-check {
-			path {
-				animation: drawDash 0.2s forwards $curve1; 
-			}
-		}
-		input[type="text"],
-		input[type="email"],
-		input[type="password"] {
-			border-color: $green;
-		}
-	}
-	&.error {
-		.label-copy {
-			color: $red;
-		}
-		.message-mask {
-			.message {
-				color: $red;
-				@include transform( translateY(0) );
-			}
-		}
-		input[type="text"],
-		input[type="email"],
-		input[type="password"] {
-			border-color: $red;
-		}
-	}
-}
-
-label.toggle-switch {
-	cursor: pointer;
-
-	// Hide actual checkbox
-	input[type="checkbox"] {
-		visibility: hidden;
-		position: absolute;
-		opacity: 0;
-		z-index: -2;
-		top: 0;
-		left: 0;
-
-		// Checked state
-		&:checked {
-			+ .switch-track {
-				border-color: $blue;
-				background-color: $blue;
-
-				.switch-button {
-					@include transform( translateX(13px) );
-				}
-			}
-			~ .label-copy {
-				opacity: 1;
-			}
-		}
-	}
-	.switch-track {
-		display: inline-block;
-		position: relative;
-		width: 36px;
-		border: 2px solid $grey-light;
-		background-color: $grey;
-		border-radius: 15px;
-		text-align: left;
-		@include transition();
-
-		.switch-button {
-			display: block;
-			width: 19px;
-			height: 19px;
-			border-radius: 50%;
-			background-color: $white;
-			@include transition();
-		}
-	}
-	.label-copy {
-		position: static;
-		display: inline-block;
-		vertical-align: top;
-		margin-left: 10px;
-		padding-top: 4px;
-		font-size: 0.6rem;
-		opacity: 0.7;
-		color: $white;
-	}
-
-	&:hover {
-		.label-copy {
-			opacity: 1;
-		}
-		.switch-button {
-			box-shadow: 0 0 10px -3px $black;
-		}
-	}
-}
 
 
 // Buttons
@@ -372,7 +233,6 @@ button,
 		&:hover {
 			color: $blue;
 			border-color: $blue;
-			// background-color: rgba(255,255,255, 0.1);
 
 			svg path {
 				fill: $blue;
@@ -387,17 +247,5 @@ button,
 				fill: $white;
 			}
 		}
-	}
-}
-
-
-// Icons
-//----------
-.icon-base {
-	fill: $blue;
-	@include transition();
-
-	&:hover {
-		// fill: $blue-hover;
 	}
 }

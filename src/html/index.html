@@ -16,6 +16,16 @@
 </head>
 <body>
 
+
+	<!-- Loader -->
+	<div class="loader">
+		<div class="loading-graphic">
+			<!-- Running man inserted by js -->
+		</div>
+	</div>
+
+
+
 	<div class="content-wrapper">
 
 
@@ -25,7 +35,7 @@
 			<p class="value-prop">The largest online database of official race results in the world. If you’ve ever finished a race, your results are here.</p>
 		</header>
 		
-		<main class="sign-in">
+		<main class="sign-in long-form">
 
 
 			<!-- Tabs -->
@@ -121,19 +131,127 @@
 							</span>
 						</label>
 					</div>
-					<button disabled class="full-width submit" type="button">Submit</button>
+					<button disabled class="full-width submit" type="submit">Submit</button>
 					<p class="fine-print">By signing up you agree to our <a href="/">Terms of Service</a> and <a href="/">Privacy&nbsp;Policy</a>.</p>
 				</form>
 
 			</div>
+
+
+
+			<!-- Long Form - Post sign-up -->
+			<form id="form-details" name="details" autocomplete="off">
+				<div class="title-container">
+					<h2>Welcome, Adam!</h2>
+					<p>To ensure more accurate results and quicker registrations, we need a bit more information about&nbsp;you.</p>
+				</div>
+					
+				<div class="input-container">
+
+					<div class="label">Birthday</div>
+					<div class="multi-input-line">
+						<select name="month" id="month">
+							<option value="01">January</option>
+							<option value="02">February</option>
+							<option value="03">March</option>
+							<option value="04">April</option>
+							<option value="05">May</option>
+							<option value="06">June</option>
+							<option value="07">July</option>
+							<option value="08">August</option>
+							<option value="09">September</option>
+							<option value="10">October</option>
+							<option value="11">November</option>
+							<option value="12">December</option>
+						</select>
+
+						<select name="day" id="day">
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="05">5</option>
+							<option value="06">6</option>
+							<option value="07">7</option>
+						</select>
+
+						<select name="year" id="year">
+							<option value="1900">1900</option>
+							<option value="1900">1900</option>
+							<option value="1900">1900</option>
+						</select>
+					</div>
+
+					<label for="gender" class="has-content">
+						<select id="gender" name="gender" class="half-size">
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+						</select>
+						<span class="label-copy">Gender</span>
+						<!-- <partial src="checkmark.html"></partial> -->
+					</label>
+
+					<label for="postal">
+						<input id="postal" name="postal" type="number" class="half-size">
+						<span class="label-copy">Postal Code</span>
+						<partial src="checkmark.html"></partial>
+						<!-- <span class="message-mask">
+							<span class="message">Valid email required</span>
+						</span> -->
+					</label>
+
+					<div class="multi-input-line">
+						<label for="city">
+							<input id="city" name="city" type="text">
+							<span class="label-copy">City</span>
+							<partial src="checkmark.html"></partial>
+							<!-- <span class="message-mask">
+								<span class="message">Last Name is required</span>
+							</span> -->
+						</label>
+
+						<label for="state">
+							<input id="state" name="state" type="text">
+							<span class="label-copy">State or Region</span>
+							<partial src="checkmark.html"></partial>
+							<!-- <span class="message-mask">
+								<span class="message">Last Name is required</span>
+							</span> -->
+						</label>
+					</div>
+
+					<label for="country">
+						<input id="country" name="country" type="text">
+						<span class="label-copy">Country</span>
+						<partial src="checkmark.html"></partial>
+						<!-- <span class="message-mask">
+							<span class="message show">Password must be 8 characters</span>
+						</span> -->
+					</label>
+
+					<label for="address">
+						<input id="address" name="address" type="text">
+						<span class="label-copy">Address</span>
+						<partial src="checkmark.html"></partial>
+						<!-- <span class="message-mask">
+							<span class="message show">Password must be 8 characters</span>
+						</span> -->
+					</label>
+				</div>
+
+				<button disabled class="full-width submit" type="submit">Submit</button>
+				<p class="fine-print">By signing up you agree to our <a href="/">Terms of Service</a> and <a href="/">Privacy&nbsp;Policy</a>.</p>
+			</form>
+
 		</main>
 
+
+		<!-- Landing Screen Buttons -->
 		<div class="landing-button-container">
 			<a class="button full-width" href="#sign-up">Sign Up</a>
-			<!-- <button class="full-width" type="button">Sign Up</button> -->
 			<a class="button hollow full-width" href="#sign-in">Sign In</a>
-			<!-- <button class="hollow full-width" type="button">Sign In</button> -->
 		</div>
+
 	</div>
 
 	<script src="/js/index.js"></script>

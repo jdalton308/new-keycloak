@@ -12,9 +12,9 @@ const babel = require('gulp-babel');
 const styleFiles = [
       './src/scss/app.scss'
   ];
-// const jsFiles = [
-// 		'./src/js/**/*.js'
-// 	];
+const jsFiles = [
+		'./src/js/*.js'
+	];
 const htmlFiles = [
 		'./src/html/*.html'
 	];
@@ -35,7 +35,8 @@ gulp.task('styles', () => {
 });
 
 gulp.task('scripts', () => {
-  gulp.src('./src/js/index.js')
+  gulp.src(jsFiles)
+    .pipe(concat('index.js'))
     .pipe(babel({
         presets: ['es2015']
     }))

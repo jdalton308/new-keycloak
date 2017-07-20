@@ -1,9 +1,50 @@
 
 
+// Loader
+//-----------------
+
+const Loader = (function(){
+
+	const bodyEl = document.querySelector('body');
+
+	function showLoading() {
+		bodyEl.classList.add('loading');
+	}
+
+	function hideLoading() {
+		bodyEl.classList.remove('loading');
+	}
+
+	function init() {
+    const config = {
+      container: document.querySelector('.loading-graphic'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: '/js/loader.json'
+    }
+
+    // bodymovin added within build process
+    const animation = bodymovin.loadAnimation(config);
+	}
+
+	return {
+		init: init,
+		show: showLoading,
+		hide: hideLoading
+	};
+})();
+
+
+
 // Forms
 //------------------
 
 const Forms = (function() {
+
+	function showLongForm() {
+		document.querySelector('main').classList.add('long-form');
+	}
 
 	function buildData(form) {
 		const rawData = new FormData(form);
@@ -19,12 +60,23 @@ const Forms = (function() {
 	function submitForm(form) {
 		const data = buildData(form);
 		// Submit data here...
+
+		// If submitting 'sign-up' form, wait for return, then
+		if (form.getAttribute('name') === 'sign-up') {
+
+			// Fake submitting and showing long-form...
+			Loader.show();
+			window.setTimeout(() => {
+				Loader.hide();
+				showLongForm();
+			}, 2000);
+		}
 	}
 
 	function watchSubmit(form) {
 		const submitButton = form.querySelector('button.submit');
 
-		form.addEventListener('submit', (e) => {
+		form.addEventListener('submit', function(e){
 			e.preventDefault();
 			submitForm(e.target);
 		});
@@ -53,6 +105,7 @@ const Forms = (function() {
 	}
 
 	function init() {
+		console.log('hi');
 		const forms = document.querySelectorAll('form');
 
 		forms.forEach((form) => {
@@ -122,17 +175,20 @@ const Inputs = (function() {
 	function bindEvents(inputContainer, form) {
 		const inputLabel = inputContainer.querySelector('.label-copy');
 		const inputField = inputContainer.querySelector('input');
-		const inputValidator = getValidator(inputField.attributes.type.value);
+		
+		if (inputField) {
+			const inputValidator = getValidator(inputField.getAttribute('type'));
 
-		// Keyup events
-		inputField.addEventListener('keyup', (e) => {
-			inputContainer.classList.toggle('has-content', !!e.target.value);
-			inputValidator(e);
-			Forms.validate(form);
-		});
+			// Keyup events
+			inputField.addEventListener('keyup', (e) => {
+				inputContainer.classList.toggle('has-content', !!e.target.value);
+				inputValidator(e);
+				Forms.validate(form);
+			});
 
-		// Watch for first blur event to start validating
-		inputField.addEventListener('blur', (e) => watchBlur(e, inputValidator) );
+			// Watch for first blur event to start validating
+			inputField.addEventListener('blur', (e) => watchBlur(e, inputValidator) );
+		}
 	}
 
 
@@ -156,13 +212,15 @@ const Inputs = (function() {
 //------------------
 
 const Tabs = (function() {
+
 	const mainEl = document.querySelector('main');
 	const signInTab = document.querySelector('.tab-sign-in');
 	const signUpTab = document.querySelector('.tab-sign-up');
 	const bodyEl = document.querySelector('body');
 
+
 	function setTab(name) {
-		mainEl.className = name;
+		mainEl.className = name + ' long-form';
 	}
 
 	function checkHash(isInitialLoad = false) {
@@ -207,7 +265,7 @@ const Tabs = (function() {
 //------------------
 
 const Content = (function(){
-	
+
 	function show() {
 		const contentEl = document.querySelector('.content-wrapper');
 		contentEl.classList.add('show');
@@ -225,6 +283,7 @@ const Content = (function(){
 //----------------
 
 window.onload = () => {
+	Loader.init();
 	Forms.init();
 	Tabs.init();
 	Content.show();

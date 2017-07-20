@@ -1,19 +1,4 @@
 
-// Background
-//----------
-body {
-	min-height: 100vh;
-	max-width: 100vw;
-	padding-bottom: 60px;
-	background-color: $blue-dark;
-	background-image: url('/img/leadville_blue.png');
-	background-position: center;
-	background-size: auto 100vh;
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	overflow-x: hidden;
-}
-
 
 // Logo & Landing screen
 //----------
@@ -94,7 +79,7 @@ body {
 		}
 		main {
 			height: auto;
-			overflow: visible;
+			// overflow: visible;
 			@include transform( translateY(0) );
 			opacity: 1;
 		}
@@ -112,6 +97,9 @@ body {
 				.logo {
 					height: 50px;
 				}
+			}
+			main {
+				overflow: visible;
 			}
 		}
 
@@ -139,9 +127,9 @@ body {
 }
 
 
-// Logo & Landing text
-//----------
 
+// Tabs toggle
+//----------
 main {
 	&.sign-in {
 		nav {
@@ -184,144 +172,4 @@ main {
 			}
 		}
 	}
-
-
-	// Tab Buttons
-	//----------
-	nav {
-		position: relative;
-		display: flex;
-		border-bottom: 1px solid $grey;
-		color: $grey;
-
-		button {
-			border: none;
-			background-color: transparent;
-
-			flex: 1 0 50%;
-			padding: 3px 10px;
-			vertical-align: top;
-			font-size: 0.6rem;
-			font-weight: 700;
-			letter-spacing: 0.7px;
-			color: $grey;
-			opacity: 0.5;
-
-			&:hover {
-				background-color: transparent;
-				color: $white;
-			}
-
-			@media (min-width: $mobile) {
-				// font-size: 0.8rem;
-			}
-		}
-		.underline-highlight {
-			position: absolute;
-			bottom: -1px;
-			left: 0;
-			width: 50%;
-			height: 1px;
-			background-color: $white;
-			@include transition(); // TODO: bezier curve
-		}
-	}
-
-	// Forms
-	//----------
-	.tab-container {
-		position: relative;
-		display: flex;
-		width: 200%;
-		@include transition();
-
-		form {
-			display: inline-block;
-			flex: 0 0 50%;
-			width: 50%;
-			padding-top: 32px;
-			text-align: center;
-			opacity: 0; // animated in
-			pointer-events: none;
-			@include transition();
-
-			.line-title {
-				// margin-bottom: 26px;
-			}
-
-			.social-button-container {
-				padding: 26px 0 32px;
-				display: flex;
-
-				button {
-					flex: 1;
-
-					&:first-child {
-						margin-right: 20px;
-					}
-				}
-			}
-
-			.input-container {
-				padding-top: 20px;
-				margin-bottom: 60px;
-			}
-
-			.fine-print {
-				margin-top: 8px;
-				text-align: left;
-			}
-
-			&#form-sign-in {
-				.input-container {
-					label {
-						&:first-child {
-							margin-bottom: 32px;
-						}
-					}
-					.keep-signed-in {
-						padding: 20px 0;
-						text-align: left;
-
-						.toggle-switch {
-							margin: 0;
-						}
-					}
-				}
-			}
-			&#form-sign-up {
-				.input-container {
-					label {
-						margin-bottom: 32px;
-
-						&:last-of-type {
-							margin-bottom: 0;
-						}
-					}
-					.multi-input-line {
-						display: flex;
-						margin-bottom: 32px;
-
-						label {
-							flex: 1;
-							display: inline-block;
-							margin-bottom: 0;
-							margin-right: 20px;
-
-							&:last-child {
-								margin: 0;
-							}
-						}
-					}
-				}
-			}
-
-			@media (min-width: $mobile) {
-				.social-button-container {
-					// padding: 50px 0;
-				}
-			}
-		}
-	}
-
 }
