@@ -150,49 +150,61 @@
 
 					<div class="label">Birthday</div>
 					<div class="multi-input-line">
-						<select name="month" id="month">
-							<option value="01">January</option>
-							<option value="02">February</option>
-							<option value="03">March</option>
-							<option value="04">April</option>
-							<option value="05">May</option>
-							<option value="06">June</option>
-							<option value="07">July</option>
-							<option value="08">August</option>
-							<option value="09">September</option>
-							<option value="10">October</option>
-							<option value="11">November</option>
-							<option value="12">December</option>
-						</select>
-
-						<select name="day" id="day">
-							<option value="01">1</option>
-							<option value="02">2</option>
-							<option value="03">3</option>
-							<option value="04">4</option>
-							<option value="05">5</option>
-							<option value="06">6</option>
-							<option value="07">7</option>
-						</select>
-
-						<select name="year" id="year">
-							<option value="1900">1900</option>
-							<option value="1900">1900</option>
-							<option value="1900">1900</option>
-						</select>
+						<div class="select-wrapper">
+							<select name="month" id="month">
+								<option value="01">January</option>
+								<option value="02">February</option>
+								<option value="03">March</option>
+								<option value="04">April</option>
+								<option value="05">May</option>
+								<option value="06">June</option>
+								<option value="07">July</option>
+								<option value="08">August</option>
+								<option value="09">September</option>
+								<option value="10">October</option>
+								<option value="11">November</option>
+								<option value="12">December</option>
+							</select>
+							<span class="select-arrow"></span>
+						</div>
+							
+						<div class="select-wrapper">
+							<select name="day" id="day">
+								<option value="01">1</option>
+								<option value="02">2</option>
+								<option value="03">3</option>
+								<option value="04">4</option>
+								<option value="05">5</option>
+								<option value="06">6</option>
+								<option value="07">7</option>
+							</select>
+							<span class="select-arrow"></span>
+						</div>
+						
+						<div class="select-wrapper">
+							<select name="year" id="year">
+								<option value="1900">1900</option>
+								<option value="1900">1900</option>
+								<option value="1900">1900</option>
+							</select>
+							<span class="select-arrow"></span>
+						</div>
 					</div>
 
-					<label for="gender" class="has-content">
-						<select id="gender" name="gender" class="half-size">
-							<option value="male">Male</option>
-							<option value="female">Female</option>
-						</select>
+					<label for="gender" class="select-label half-size">
+						<div class="select-wrapper">
+							<select id="gender" name="gender">
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+							</select>
+							<span class="select-arrow"></span>
+						</div>
 						<span class="label-copy">Gender</span>
 						<!-- <partial src="checkmark.html"></partial> -->
 					</label>
 
-					<label for="postal">
-						<input id="postal" name="postal" type="number" class="half-size">
+					<label for="postal" class="half-size">
+						<input id="postal" name="postal" type="text">
 						<span class="label-copy">Postal Code</span>
 						<partial src="checkmark.html"></partial>
 						<!-- <span class="message-mask">

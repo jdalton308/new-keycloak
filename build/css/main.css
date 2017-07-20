@@ -296,17 +296,27 @@ label {
         -ms-transform: translateY(-22px) scale(0.7);
         -webkit-transform: translateY(-22px) scale(0.7);
         transform: translateY(-22px) scale(0.7);
-        transform-origin: 0% 50%; }
+        transform-origin: 0% 50%;
+        color: #9A9A9A; }
     label input[type="text"].half-size,
     label input[type="email"].half-size,
     label input[type="number"].half-size,
     label input[type="password"].half-size {
       width: 50%; }
+  label.half-size {
+    width: calc(50% - 10px); }
   label.has-content .label-copy {
     -ms-transform: translateY(-22px) scale(0.7);
     -webkit-transform: translateY(-22px) scale(0.7);
     transform: translateY(-22px) scale(0.7);
-    transform-origin: 0% 50%; }
+    transform-origin: 0% 50%;
+    color: #9A9A9A; }
+  label.select-label .label-copy {
+    -ms-transform: translateY(-20px) scale(0.7);
+    -webkit-transform: translateY(-20px) scale(0.7);
+    transform: translateY(-20px) scale(0.7);
+    transform-origin: 0% 50%;
+    color: #9A9A9A; }
   label.valid .label-copy {
     color: #97CC04; }
   label.valid .message-mask .message {
@@ -317,8 +327,14 @@ label {
     animation: drawDash 0.2s forwards cubic-bezier(0.22, 0.07, 0.23, 0.99); }
   label.valid input[type="text"],
   label.valid input[type="email"],
+  label.valid input[type="number"],
   label.valid input[type="password"] {
     border-color: #97CC04; }
+    label.valid input[type="text"]:focus + .label-copy,
+    label.valid input[type="email"]:focus + .label-copy,
+    label.valid input[type="number"]:focus + .label-copy,
+    label.valid input[type="password"]:focus + .label-copy {
+      color: #97CC04; }
   label.error .label-copy {
     color: #FF3C38; }
   label.error .message-mask .message {
@@ -331,11 +347,28 @@ label {
   label.error input[type="number"],
   label.error input[type="password"] {
     border-color: #FF3C38; }
+    label.error input[type="text"]:focus + .label-copy,
+    label.error input[type="email"]:focus + .label-copy,
+    label.error input[type="number"]:focus + .label-copy,
+    label.error input[type="password"]:focus + .label-copy {
+      color: #FF3C38; }
+
+.select-wrapper {
+  position: relative; }
+  .select-wrapper .select-arrow {
+    display: inline-block;
+    position: absolute;
+    top: 17px;
+    right: 3px;
+    border-top: 3px solid #FFF;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    pointer-events: none; }
 
 select {
   display: block;
   width: 100%;
-  padding: 2px 0 3px;
+  padding: 12px 0 3px;
   background-color: transparent;
   font-family: "Proxima Nova", Arial, sans-serif;
   font-size: 0.8rem;
@@ -345,29 +378,36 @@ select {
   border-radius: 0;
   border-bottom: 1px solid #FFF;
   -webkit-transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
-  transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99); }
+  transition: all 0.3s cubic-bezier(0.22, 0.07, 0.23, 0.99);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
   select:focus {
     border-color: #16A9E1; }
-  select.half-size {
-    width: 50%; }
   select option {
     padding-left: 0; }
 
+::-ms-expand {
+  display: none; }
+
 .label {
-  font-size: 0.5rem;
-  color: #FFF; }
+  position: relative;
+  top: 8px;
+  margin-bottom: 3px;
+  font-size: 0.55rem;
+  color: #9A9A9A; }
 
 .multi-input-line {
   display: flex;
   margin-bottom: 32px; }
   .multi-input-line label,
-  .multi-input-line select {
+  .multi-input-line .select-wrapper {
     flex: 1;
     display: inline-block;
     margin-bottom: 0;
     margin-right: 20px; }
     .multi-input-line label:last-child,
-    .multi-input-line select:last-child {
+    .multi-input-line .select-wrapper:last-child {
       margin: 0; }
 
 label.toggle-switch {
@@ -613,9 +653,11 @@ main #form-details {
     main #form-details .title-container h2 {
       margin-bottom: 12px; }
   main #form-details .input-container label {
-    margin-bottom: 32px; }
-  main #form-details .input-container .multi-input-line label {
-    margin-bottom: 0; }
+    margin-bottom: 20px; }
+  main #form-details .input-container .multi-input-line {
+    margin-bottom: 20px; }
+    main #form-details .input-container .multi-input-line label {
+      margin-bottom: 0; }
 
 main.long-form nav,
 main.long-form .tab-container {

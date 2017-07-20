@@ -2,6 +2,7 @@
 
 // Inputs
 //---------
+
 label {
 	position: relative;
 	display: block;
@@ -75,6 +76,7 @@ label {
 			+ .label-copy {
 				@include transform( translateY(-22px) scale(0.7) );
 				transform-origin: 0% 50%;
+				color: $grey-dark;
 			}
 		}
 		
@@ -83,10 +85,23 @@ label {
 		}
 	}
 
+	&.half-size {
+		width: calc(50% - 10px);
+	}
+
 	&.has-content {
 		.label-copy {
 			@include transform( translateY(-22px) scale(0.7) );
 			transform-origin: 0% 50%;
+			color: $grey-dark;
+		}
+	}
+
+	&.select-label {
+		.label-copy {
+			@include transform( translateY(-20px) scale(0.7) );
+			transform-origin: 0% 50%;
+			color: $grey-dark;
 		}
 	}
 
@@ -107,8 +122,15 @@ label {
 		}
 		input[type="text"],
 		input[type="email"],
+		input[type="number"],
 		input[type="password"] {
 			border-color: $green;
+
+			&:focus {
+				+ .label-copy {
+					color: $green;
+				}
+			}
 		}
 	}
 	&.error {
@@ -126,14 +148,39 @@ label {
 		input[type="number"],
 		input[type="password"] {
 			border-color: $red;
+
+			&:focus {
+				+ .label-copy {
+					color: $red;
+				}
+			}
 		}
 	}
 }
 
+
+
+// Select Box
+//------------
+
+.select-wrapper {
+	position: relative;
+
+	.select-arrow {
+    display: inline-block;
+    position: absolute;
+    top: 17px;
+    right: 3px;
+    border-top: 3px solid $white;    
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    pointer-events: none;
+	}
+}
 select {
 	display: block;
 	width: 100%;
-	padding: 2px 0 3px;
+	padding: 12px 0 3px;
 	background-color: transparent;
 	font-family: $sans-family;
 	font-size: 0.8rem;
@@ -144,30 +191,40 @@ select {
 	border-bottom: 1px solid $white;
 	@include transition();
 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
 	&:focus {
 		border-color: $blue;
-	}
-	
-	&.half-size {
-		width: 50%;
 	}
 
 	option {
 		padding-left: 0;
 	}
 }
+::-ms-expand {
+  display: none;
+}
 
+
+
+// Multi-input line
+//-------------
 
 .label {
-	font-size: 0.5rem;
-	color: $white;
+	position: relative;
+	top: 8px;
+	margin-bottom: 3px;
+	font-size: 0.55rem;
+	color: $grey-dark;
 }
 .multi-input-line {
 	display: flex;
 	margin-bottom: 32px;
 
 	label,
-	select {
+	.select-wrapper {
 		flex: 1;
 		display: inline-block;
 		margin-bottom: 0;
